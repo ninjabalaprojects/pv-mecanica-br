@@ -1148,7 +1148,7 @@
       body     { padding-top: 38px; }
 
       /* Marquee maior no tablet/mobile */
-      .marquee-img { height: auto; width: 80vw; max-width: 560px; border-radius: 12px; }
+      .marquee-img { height: auto; width: 90vw; max-width: none; border-radius: 12px; }
 
       /* Hero já é coluna central — só ajusta bullets */
       .hero-bullets { grid-template-columns: 1fr 1fr; max-width: 100%; }
@@ -1189,13 +1189,9 @@
       }
       .hero-bullets li { padding: 10px 14px; }
 
-      /* Marquee — imagem ocupa a largura do viewport no mobile */
-      .marquee-img {
-        height: auto;
-        width: 92vw;
-        max-width: 500px;
-        border-radius: 12px;
-      }
+      /* Marquee — imagem quase tela cheia no mobile pequeno */
+      .marquee-img { height: auto; width: 94vw; max-width: none; border-radius: 12px; }
+      .marquee-track { gap: 12px; }
 
       /* Offer */
       .ob-price      { font-size: 3.8rem; }
