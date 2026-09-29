@@ -955,8 +955,41 @@
       gap: 56px;
       align-items: start;
     }
-    .instructor-photo { border-radius: 14px; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,.1); }
+    /* Foto + badge wrench — igual ao original */
+    .instructor-photo-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: visible;
+    }
+    .instructor-photo {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,.12);
+    }
     .instructor-photo img { width: 100%; display: block; }
+    .instructor-badge {
+      position: absolute;
+      top: 16px; right: -12px;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,.25);
+      z-index: 2;
+    }
+    .instructor-badge svg { color: var(--gold-fg); }
+    /* Texto lado direito — centralizado mobile, esquerda desktop */
+    .instructor-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    @media (min-width: 769px) {
+      .instructor-copy { align-items: flex-start; text-align: left; }
+    }
     .instructor-name {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(2rem, 4vw, 3rem);
@@ -966,18 +999,24 @@
       color: var(--brand-deep);
       line-height: 1;
       margin-bottom: 4px;
+      margin-top: 20px;
     }
+    .instructor-name span { color: var(--brand); }
     .instructor-title {
-      font-size: 0.88rem;
-      color: var(--muted-fg);
-      font-style: italic;
-      margin-bottom: 20px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--brand-deep);
+      margin-bottom: 16px;
     }
     .instructor-bio {
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       color: var(--muted-fg);
       line-height: 1.7;
       margin-bottom: 24px;
+      max-width: 520px;
     }
     .instructor-list {
       display: flex;
@@ -1636,15 +1675,21 @@
 <section id="instructor" aria-labelledby="instructor-h2">
   <div class="shell">
     <div class="instructor-grid">
-      <div class="instructor-photo">
-        <img src="assets/instructor.jpg" alt="John Mitchell — Instrutor do Curso de Mecânica Automotiva" loading="lazy" width="300" />
+      <div class="instructor-photo-wrap">
+        <div class="instructor-photo">
+          <img src="assets/expert_1.jpg" alt="Ricardo Mendes — Instrutor do Curso de Mecânica Automotiva" loading="lazy" width="300" />
+        </div>
+        <!-- Badge wrench dourado — idêntico ao original -->
+        <span class="instructor-badge" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></svg>
+        </span>
       </div>
-      <div>
+      <div class="instructor-copy">
         <span class="section-tag">Seu instrutor</span>
-        <h2 class="instructor-name" id="instructor-h2">Conheça John Mitchell.</h2>
+        <h2 class="instructor-name" id="instructor-h2">Conheça <span>Ricardo Mendes.</span></h2>
         <p class="instructor-title">Mecânico experiente com mais de 15 anos de estrada.</p>
         <p class="instructor-bio">
-          John Mitchell passou mais de 15 anos fazendo manutenção, diagnóstico e reparo
+          Ricardo Mendes passou mais de 15 anos fazendo manutenção, diagnóstico e reparo
           de veículos em oficinas independentes e concessionárias. Ao longo do caminho,
           consertou milhares de carros e formou muitos técnicos que hoje vivem disso.
           Agora ele colocou toda essa experiência real neste curso, ensinando você passo
