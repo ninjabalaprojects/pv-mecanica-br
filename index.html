@@ -665,62 +665,13 @@
     }
     .offer-top {
       text-align: center;
-      margin-bottom: 56px;
+      margin-bottom: 40px;
     }
-    .offer-grid {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 48px;
-      align-items: start;
+    /* Caixa única centralizada — max-w-2xl como no original */
+    .offer-box-wrap {
+      max-width: 672px;
+      margin: 0 auto;
     }
-    /* Left — description */
-    .offer-left-h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      color: var(--brand-deep);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .offer-left-sub {
-      font-size: 0.82rem;
-      color: var(--muted-fg);
-      margin-bottom: 24px;
-      line-height: 1.5;
-    }
-    .offer-section-label {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted-fg);
-      margin-bottom: 10px;
-    }
-    .offer-list {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-      margin-bottom: 24px;
-    }
-    .offer-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 0.85rem;
-      color: var(--brand-deep);
-      line-height: 1.4;
-    }
-    .offer-bonus-label {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-    .offer-bonus-list li { color: #374151; }
 
     /* ===== OFFER BOX — identical to original =====
        original: "relative overflow-hidden rounded-2xl border-[3px] border-red-600 bg-[#0A0A0A] p-6 sm:p-10 shadow-2xl"
@@ -784,40 +735,51 @@
       font-size: 0.82rem;
       color: rgba(255,255,255,.55);
       line-height: 1.55;
-      margin-bottom: 24px;
-      padding-bottom: 20px;
+      margin-bottom: 32px;
+    }
+    /* Grade 2 colunas dentro da caixa — igual ao original */
+    .ob-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 0;
+      padding-bottom: 32px;
       border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    @media (max-width: 540px) {
+      .ob-cols { grid-template-columns: 1fr; }
     }
     .ob-section-label {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 0.82rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.4);
-      margin-bottom: 10px;
+      color: #fff;
+      margin-bottom: 14px;
     }
     .ob-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-bottom: 16px;
+      gap: 10px;
     }
     .ob-list li {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.82rem;
       color: rgba(255,255,255,.75);
+      line-height: 1.35;
     }
-    .ob-list li .chk { width: 16px; height: 16px; font-size: 0.55rem; }
+    .ob-list li .chk { width: 16px; height: 16px; font-size: 0.55rem; flex-shrink: 0; margin-top: 2px; }
     .ob-bonus-label {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 0.82rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
+    .ob-list .muted-item { color: rgba(255,255,255,.35); font-style: italic; font-size: 0.72rem; }
     /* Price block */
     .ob-price-block {
       padding-top: 20px;
@@ -825,22 +787,24 @@
       margin-top: 8px;
     }
     .ob-was {
-      font-size: 0.78rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.82rem;
       color: rgba(255,255,255,.35);
-      font-style: italic;
+      text-decoration: line-through;
     }
     .ob-today {
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: .12em;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: .05em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.4);
-      margin-top: 2px;
+      color: #fff;
+      margin-top: 4px;
     }
-    /* Price — Bebas Neue, very large, gold */
+    /* Price — Bebas Neue text-6xl/8xl gold como no original */
     .ob-price {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 8vw, 5.5rem);
+      font-size: clamp(4.5rem, 12vw, 7rem);
       font-weight: 400;
       letter-spacing: -0.01em;
       color: var(--gold);
@@ -848,9 +812,9 @@
       margin: 4px 0 2px;
     }
     .ob-price small {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       vertical-align: top;
-      margin-top: 10px;
+      margin-top: 12px;
       display: inline-block;
     }
     .ob-payment-type {
@@ -884,14 +848,15 @@
       text-transform: uppercase;
       color: rgba(255,255,255,.35);
     }
-    /* Viewers urgency — vermelho como no original */
+    /* Viewers urgency — laranja com fundo translúcido como no original */
     .ob-urgency {
-      margin-top: 12px;
+      margin-top: 16px;
       text-align: center;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      color: #fff;
-      background: var(--red-cta);
+      color: #fb923c;
+      background: rgba(249,115,22,.1);
+      border: 1px solid rgba(249,115,22,.2);
       border-radius: 8px;
       padding: 10px 14px;
       letter-spacing: 0.01em;
@@ -1174,7 +1139,7 @@
        RESPONSIVE
     ================================================ */
     @media (max-width: 1024px) {
-      .offer-grid { grid-template-columns: 1fr 380px; }
+      /* offer-grid removido — layout agora é caixa única centralizada */
     }
 
     @media (max-width: 768px) {
@@ -1195,8 +1160,6 @@
       .career-grid     { grid-template-columns: 1fr; }
       .cert-grid       { grid-template-columns: 1fr; }
       .cert-img        { order: -1; }
-      .offer-grid      { grid-template-columns: 1fr; }
-      .offer-box       { position: static; }
       .guarantee-grid  { grid-template-columns: 1fr; text-align: center; justify-items: center; }
       .instructor-grid { grid-template-columns: 1fr; }
       .instructor-photo{ max-width: 280px; margin: 0 auto; }
@@ -1549,99 +1512,72 @@
       </p>
     </div>
 
-    <div class="offer-grid">
+    <!-- Caixa única centralizada — idêntica ao original -->
+    <div class="offer-box-wrap">
+      <div class="offer-box" role="region" aria-label="Comprar agora">
+        <!-- Badge no topo pendurado na borda — idêntico ao original -->
+        <div class="offer-box-badge">
+          <span>★ Oferta por Tempo Limitado</span>
+        </div>
 
-      <!-- LEFT — o que está incluso -->
-      <div>
-        <h3 class="offer-left-h2">Acesso Completo</h3>
-        <p class="offer-left-sub">Curso de Mecânica Automotiva™ +</p>
-        <p class="offer-left-sub">
-          Receba o curso completo com todos os bônus, ferramentas práticas e seu certificado digital — tudo em uma única compra.
-        </p>
+        <div class="offer-box-inner">
+          <p class="offer-box-tag">Acesso Completo</p>
+          <h3 class="offer-box-name">
+            Curso de Mecânica Automotiva™ <span class="gld">+</span>
+          </h3>
+          <p class="offer-box-desc">
+            Receba o curso completo com todos os bônus, ferramentas práticas e
+            seu certificado digital — tudo em uma única compra.
+          </p>
 
-        <p class="offer-section-label">O Curso Completo Inclui:</p>
-        <ul class="offer-list" aria-label="Itens do curso">
-          <li><span class="chk" aria-hidden="true">✓</span>50+ videoaulas práticas</li>
-          <li><span class="chk" aria-hidden="true">✓</span>Certificado profissional</li>
-          <li><span class="chk" aria-hidden="true">✓</span>Conteúdo 100% online</li>
-          <li><span class="chk" aria-hidden="true">✓</span>Acesso vitalício</li>
-        </ul>
-
-        <p class="offer-bonus-label">+ 10 Bônus Exclusivos:</p>
-        <ul class="offer-list offer-bonus-list" aria-label="Bônus inclusos">
-          <li><span class="star" aria-hidden="true">★</span>Manual completo do mecânico automotivo</li>
-          <li><span class="star" aria-hidden="true">★</span>Tabela de torques e regulagens</li>
-          <li><span class="star" aria-hidden="true">★</span>Checklist de manutenção preventiva</li>
-          <li><span class="star" aria-hidden="true">★</span>Guia de diagnóstico de falhas</li>
-          <li><span class="star" aria-hidden="true">★</span>Manual de ferramentas do mecânico</li>
-          <li><span class="star" aria-hidden="true">★</span>Guia de preços de serviços</li>
-          <li><span class="star" aria-hidden="true">★</span>...e mais 4 manuais especializados</li>
-        </ul>
-      </div>
-
-      <!-- RIGHT — Offer Box idêntico ao original -->
-      <div>
-        <div class="offer-box" role="region" aria-label="Comprar agora">
-          <!-- Badge no topo — pendurado na borda -->
-          <div class="offer-box-badge">
-            <span>★ Oferta por Tempo Limitado</span>
+          <!-- Grade 2 colunas dentro da caixa — idêntica ao original -->
+          <div class="ob-cols">
+            <div>
+              <p class="ob-section-label">O Curso Completo Inclui:</p>
+              <ul class="ob-list">
+                <li><span class="chk" aria-hidden="true">✓</span>50+ videoaulas práticas</li>
+                <li><span class="chk" aria-hidden="true">✓</span>Certificado profissional</li>
+                <li><span class="chk" aria-hidden="true">✓</span>Conteúdo 100% online</li>
+                <li><span class="chk" aria-hidden="true">✓</span>Acesso vitalício</li>
+              </ul>
+            </div>
+            <div>
+              <p class="ob-bonus-label">+ 10 Bônus Exclusivos:</p>
+              <ul class="ob-list">
+                <li><span class="chk" aria-hidden="true">✓</span>Manual completo do mecânico</li>
+                <li><span class="chk" aria-hidden="true">✓</span>Tabela de torques e regulagens</li>
+                <li><span class="chk" aria-hidden="true">✓</span>Checklist de manutenção preventiva</li>
+                <li><span class="chk" aria-hidden="true">✓</span>Guia de diagnóstico de falhas</li>
+                <li><span class="chk" aria-hidden="true">✓</span>Manual de ferramentas</li>
+                <li><span class="chk" aria-hidden="true">✓</span>Guia de preços de serviços</li>
+                <li class="muted-item">...e mais 4 manuais especializados</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="offer-box-inner">
-            <p class="offer-box-tag">Acesso Completo</p>
-            <h3 class="offer-box-name">
-              Curso de Mecânica<br>Automotiva™ <span class="gld">+</span>
-            </h3>
+          <!-- Price block -->
+          <div class="ob-price-block">
+            <div class="ob-was">Preço Normal <span style="text-decoration:line-through">R$ 197</span></div>
+            <div class="ob-today">Somente Hoje</div>
+            <div class="ob-price" aria-label="R$ 37"><small>R$</small>37</div>
+            <div class="ob-payment-type">Pagamento único · Acesso imediato</div>
 
-            <p class="offer-box-desc">
-              Receba o curso completo com todos os bônus, ferramentas práticas e
-              seu certificado digital — tudo em uma única compra.
-            </p>
+            <a href="#" class="btn ob-cta btn-glow btn-full" onclick="goCheckout(event)">
+              Obter Acesso Completo →
+            </a>
 
-            <p class="ob-section-label">O Curso Completo Inclui:</p>
-            <ul class="ob-list">
-              <li><span class="chk" aria-hidden="true">✓</span>50+ videoaulas práticas</li>
-              <li><span class="chk" aria-hidden="true">✓</span>Certificado profissional</li>
-              <li><span class="chk" aria-hidden="true">✓</span>Conteúdo 100% online</li>
-              <li><span class="chk" aria-hidden="true">✓</span>Acesso vitalício</li>
-            </ul>
+            <div class="ob-trust">
+              <span>🔒 Checkout Seguro</span>
+              <span>⚡ Acesso Imediato</span>
+              <span>✅ Garantia 7 Dias</span>
+            </div>
 
-            <p class="ob-bonus-label">+ 10 Bônus Exclusivos:</p>
-            <ul class="ob-list">
-              <li><span class="star" style="font-size:.75rem" aria-hidden="true">★</span>Manual completo do mecânico automotivo</li>
-              <li><span class="star" style="font-size:.75rem" aria-hidden="true">★</span>Tabela de torques e regulagens</li>
-              <li><span class="star" style="font-size:.75rem" aria-hidden="true">★</span>Checklist de manutenção preventiva</li>
-              <li><span class="star" style="font-size:.75rem" aria-hidden="true">★</span>Guia de diagnóstico de falhas</li>
-              <li><span class="star" style="font-size:.75rem" aria-hidden="true">★</span>Manual de ferramentas do mecânico</li>
-              <li><span class="star" style="font-size:.75rem" aria-hidden="true">★</span>Guia de preços de serviços</li>
-              <li><span class="star" style="font-size:.75rem;opacity:.5" aria-hidden="true">★</span><span style="opacity:.5;font-style:italic;">...e mais 4 manuais especializados</span></li>
-            </ul>
-
-            <!-- Price block -->
-            <div class="ob-price-block">
-              <div class="ob-was">Preço Normal R$ 197</div>
-              <div class="ob-today">Somente Hoje</div>
-              <div class="ob-price" aria-label="R$ 37"><small>R$</small>37</div>
-              <div class="ob-payment-type">Pagamento único · Acesso imediato</div>
-
-              <a href="#" class="btn ob-cta btn-glow btn-full" onclick="goCheckout(event)">
-                Obter Acesso Completo →
-              </a>
-
-              <div class="ob-trust">
-                <span>🔒 Checkout Seguro</span>
-                <span>⚡ Acesso Imediato</span>
-                <span>✅ Garantia 7 Dias</span>
-              </div>
-
-              <div class="ob-urgency" role="status" aria-live="polite">
-                ⚠️ <span id="viewers">47</span> pessoas estão visualizando esta página agora
-              </div>
+            <div class="ob-urgency" role="status" aria-live="polite">
+              ⚠️ <span id="viewers">47</span> pessoas estão visualizando esta página agora
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
