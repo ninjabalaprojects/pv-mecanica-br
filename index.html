@@ -1,0 +1,2435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curso de Mecânica Automotiva — Torne-se um Mecânico Profissional</title>
+  <meta name="description" content="Aprenda mecânica automotiva do zero com um treinamento profissional online completo. Mais de 50 videoaulas, material de apoio, certificado e 10 bônus exclusivos." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Curso de Mecânica Automotiva — Torne-se um Mecânico Profissional" />
+  <meta property="og:description" content="Aprenda mecânica automotiva do zero com um treinamento profissional online completo. Mais de 50 videoaulas, certificado e 10 bônus exclusivos." />
+  <meta property="og:image" content="[INSERIR URL DA IMAGEM OG]" />
+  <meta property="og:url" content="[INSERIR URL DA PÁGINA]" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Curso de Mecânica Automotiva — Torne-se um Mecânico Profissional" />
+  <meta name="twitter:description" content="Aprenda mecânica automotiva do zero. Videoaulas, certificado e 10 bônus." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="[INSERIR FAVICON]" type="image/x-icon" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       RESET & BASE
+    ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark-bg:       #0a1628;
+      --dark-bg2:      #0f1e35;
+      --dark-bg3:      #162040;
+      --orange:        #e85c0d;
+      --orange-hover:  #c94d09;
+      --orange-light:  #ff6b1a;
+      --yellow:        #f5c518;
+      --white:         #ffffff;
+      --light-gray:    #f7f8fa;
+      --mid-gray:      #e8eaed;
+      --text-dark:     #1a1a2e;
+      --text-body:     #3a3a4a;
+      --text-muted:    #6b7280;
+      --green:         #16a34a;
+      --border:        #2a3a5a;
+      --font:          'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      color: var(--text-dark);
+      background: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* =========================================================
+       UTILITY
+    ========================================================= */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); border: 0;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-family: var(--font);
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 18px 40px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .btn-primary:hover { background: var(--orange-hover); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-large {
+      font-size: 1.2rem;
+      padding: 22px 56px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .section-title.dark { color: var(--white); }
+    .section-title.light { color: var(--text-dark); }
+
+    .divider {
+      width: 60px;
+      height: 4px;
+      background: var(--orange);
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+
+    .check-icon { color: var(--orange); margin-right: 10px; flex-shrink: 0; }
+
+    /* Placeholder image box */
+    .img-placeholder {
+      background: #1e2d4a;
+      border: 2px dashed var(--border);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #5a7a9a;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 20px;
+      gap: 8px;
+    }
+    .img-placeholder svg { opacity: 0.4; }
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+    #site-header {
+      background: var(--dark-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    #site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .header-logo {
+      color: var(--white);
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .header-logo span { color: var(--orange); }
+    .header-cta {
+      font-size: 0.8rem;
+      padding: 10px 20px;
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+    #hero {
+      background: var(--dark-bg);
+      padding: 60px 0 70px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(232,92,13,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-label {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 3px;
+      margin-bottom: 20px;
+    }
+
+    .hero-headline {
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .hero-headline em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .hero-subheadline {
+      font-size: 1rem;
+      color: #a0b4cc;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      max-width: 520px;
+    }
+
+    .hero-bullets {
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hero-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .hero-bullets li::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 900;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #7a9ab8;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .trust-item svg { color: var(--orange); }
+
+    /* Hero image side */
+    .hero-image-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-product-img {
+      width: 100%;
+      max-width: 380px;
+      border-radius: 8px;
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: -16px;
+      right: -10px;
+      background: var(--yellow);
+      color: #1a1a00;
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1rem;
+      line-height: 1.1;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      text-transform: uppercase;
+      padding: 8px;
+    }
+    .hero-badge strong { font-size: 1.8rem; line-height: 1; }
+
+    .hero-stars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--yellow);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       AUDIENCE
+    ========================================================= */
+    #audience {
+      background: var(--light-gray);
+      padding: 70px 0;
+      text-align: center;
+    }
+    .audience-title {
+      font-size: clamp(1.5rem, 2.8vw, 2rem);
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .audience-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+    }
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      text-align: left;
+    }
+    .audience-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .audience-card-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .audience-card ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .audience-card li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-body);
+      line-height: 1.4;
+    }
+    .audience-card li::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* =========================================================
+       LEARN
+    ========================================================= */
+    #learn {
+      background: var(--dark-bg);
+      padding: 70px 0;
+      text-align: center;
+    }
+    .learn-intro {
+      color: #8aa3bd;
+      font-size: 0.95rem;
+      max-width: 620px;
+      margin: 16px auto 40px;
+    }
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      text-align: left;
+    }
+    .learn-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--dark-bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 14px;
+      color: var(--white);
+      font-size: 0.9rem;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+    .learn-item::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 900;
+      flex-shrink: 0;
+      font-size: 0.95rem;
+      margin-top: 1px;
+    }
+
+    /* =========================================================
+       STUDY MATERIAL
+    ========================================================= */
+    #study-material {
+      background: var(--light-gray);
+      padding: 70px 0;
+      text-align: center;
+    }
+    .material-intro {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 580px;
+      margin: 12px auto 36px;
+    }
+    .material-scroll {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--orange) #e0e0e0;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .material-card {
+      flex: 0 0 130px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      border: 1px solid #e0e0e0;
+    }
+    .material-card .img-placeholder {
+      height: 100px;
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .material-card-label {
+      padding: 8px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* =========================================================
+       VIDEO LESSONS
+    ========================================================= */
+    #video-lessons {
+      background: var(--dark-bg);
+      padding: 70px 0;
+      text-align: center;
+    }
+    .video-intro {
+      color: #8aa3bd;
+      font-size: 0.95rem;
+      max-width: 580px;
+      margin: 12px auto 36px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .video-thumb {
+      background: var(--dark-bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-thumb .img-placeholder {
+      height: 100%;
+      width: 100%;
+      border-radius: 0;
+      border: none;
+      font-size: 0.65rem;
+    }
+    .video-play-icon {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      background: rgba(232,92,13,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .video-count-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark-bg2);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 8px 20px;
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-top: 28px;
+    }
+
+    /* =========================================================
+       ENROLLMENT BENEFITS
+    ========================================================= */
+    #enrollment {
+      background: #fff;
+      padding: 70px 0;
+    }
+    .enrollment-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .enrollment-label { margin-bottom: 10px; }
+    .enrollment-title {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .enrollment-intro {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    .enrollment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .enrollment-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.4;
+    }
+    .enrollment-list li::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .enrollment-bonus-block {
+      background: var(--dark-bg);
+      border-radius: 10px;
+      padding: 24px;
+      margin-top: 8px;
+    }
+    .bonus-block-title {
+      color: var(--yellow);
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+    .bonus-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bonus-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #c8d8e8;
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+    .bonus-list li::before {
+      content: '★';
+      color: var(--yellow);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .enrollment-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .enrollment-device {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.15);
+    }
+    .enrollment-device .img-placeholder { height: 480px; }
+
+    /* =========================================================
+       TESTIMONIALS
+    ========================================================= */
+    #testimonials {
+      background: var(--light-gray);
+      padding: 70px 0;
+      text-align: center;
+    }
+    .testimonials-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 540px;
+      margin: 12px auto 40px;
+    }
+    .testimonials-display {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      text-align: left;
+    }
+    .testimonials-phone {
+      display: flex;
+      justify-content: center;
+    }
+    .phone-mockup {
+      width: 220px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+      border: 6px solid #1a1a2e;
+    }
+    .phone-mockup .img-placeholder { height: 420px; border-radius: 0; border: none; }
+
+    .testimonials-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--orange);
+    }
+    .testimonial-stars {
+      color: var(--yellow);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+    .testimonial-text {
+      font-size: 0.88rem;
+      color: var(--text-body);
+      line-height: 1.5;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .testimonial-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .testimonial-placeholder {
+      background: #e8edf5;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      color: #8898aa;
+      font-size: 0.82rem;
+      font-style: italic;
+    }
+
+    /* =========================================================
+       CAREER
+    ========================================================= */
+    #career {
+      background: var(--dark-bg);
+      padding: 70px 0;
+    }
+    .career-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .career-content {}
+    .career-title {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .career-body {
+      color: #8aa3bd;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .career-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .career-highlights li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--white);
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+    .career-highlights li::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .career-image {}
+    .career-cert-wrap {
+      background: var(--dark-bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 24px;
+      text-align: center;
+    }
+    .career-cert-wrap .img-placeholder { height: 280px; border-radius: 8px; }
+    .career-cert-note {
+      color: #6a8aaa;
+      font-size: 0.8rem;
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    /* =========================================================
+       STUDENT PROOF
+    ========================================================= */
+    #student-proof {
+      background: #0d1f36;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .proof-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 4px;
+      opacity: 0.5;
+    }
+    .proof-photo-item {
+      aspect-ratio: 1;
+      background: #1e3050;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .proof-photo-item .img-placeholder {
+      height: 100%;
+      border-radius: 0;
+      border: none;
+      font-size: 0.6rem;
+    }
+    .proof-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(13,31,54,0.6) 0%, rgba(13,31,54,0.3) 40%, rgba(13,31,54,0.7) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .proof-text-block {
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .proof-number {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+    .proof-number span { color: var(--orange); }
+    .proof-label {
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* =========================================================
+       OFFER
+    ========================================================= */
+    #offer {
+      background: var(--dark-bg3);
+      padding: 80px 0;
+      text-align: center;
+    }
+    .offer-inner {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 48px;
+      align-items: start;
+      text-align: left;
+    }
+    .offer-label-tag { margin-bottom: 12px; }
+    .offer-headline {
+      font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .offer-subheadline {
+      color: #8aa3bd;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .offer-includes-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .offer-includes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .offer-includes-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #ccd8e8;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .offer-includes-list li::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .offer-bonus-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      margin-bottom: 14px;
+    }
+    .offer-bonus-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .offer-bonus-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #ccd8e8;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .offer-bonus-list li::before {
+      content: '★';
+      color: var(--yellow);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    /* Offer Box */
+    .offer-box {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      position: sticky;
+      top: 80px;
+    }
+    .offer-box-header {
+      background: var(--dark-bg);
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .offer-box-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+    .offer-box-title {
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .offer-box-body {
+      padding: 24px;
+    }
+    .offer-box-device-img {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .offer-box-device-img .img-placeholder { height: 160px; border-radius: 8px; }
+
+    .offer-box-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .offer-box-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.83rem;
+      color: var(--text-body);
+      line-height: 1.4;
+    }
+    .offer-box-checklist li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .offer-price-block {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .offer-price-was {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+    .offer-price-now-label {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 4px 0;
+    }
+    .offer-price-now {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .offer-price-now small {
+      font-size: 1.2rem;
+      font-weight: 700;
+      vertical-align: super;
+    }
+    .offer-price-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .offer-box-cta {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      font-size: 1.05rem;
+    }
+    .offer-box-security {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+
+    /* =========================================================
+       GUARANTEE
+    ========================================================= */
+    #guarantee {
+      background: #fff;
+      padding: 70px 0;
+    }
+    .guarantee-inner {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .guarantee-badge-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    .guarantee-badge {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #16a34a 0%, #0d7c38 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      font-weight: 900;
+      box-shadow: 0 8px 32px rgba(22,163,74,0.3);
+      border: 6px solid #dcfce7;
+      padding: 16px;
+    }
+    .guarantee-badge-days {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+    .guarantee-badge-text {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.3;
+      margin-top: 4px;
+    }
+    .guarantee-content {}
+    .guarantee-title {
+      font-size: clamp(1.3rem, 2vw, 1.7rem);
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+    .guarantee-title span { color: var(--orange); }
+    .guarantee-text {
+      color: var(--text-body);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       INSTRUCTOR
+    ========================================================= */
+    #instructor {
+      background: var(--dark-bg);
+      padding: 70px 0;
+    }
+    .instructor-inner {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .instructor-photo-wrap {
+      position: relative;
+    }
+    .instructor-photo {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+    .instructor-photo .img-placeholder { height: 360px; border-radius: 0; border: none; }
+
+    .instructor-content {}
+    .instructor-name {
+      font-size: clamp(1.6rem, 2.5vw, 2rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .instructor-title {
+      color: var(--orange);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+    .instructor-bio {
+      color: #8aa3bd;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .instructor-stats {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .stat-item {
+      text-align: center;
+      background: var(--dark-bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 20px;
+      min-width: 90px;
+    }
+    .stat-value {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--orange);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: #6a8aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* =========================================================
+       FAQ
+    ========================================================= */
+    #faq {
+      background: var(--light-gray);
+      padding: 70px 0;
+      text-align: center;
+    }
+    .faq-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin: 12px auto 40px;
+      max-width: 520px;
+    }
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .faq-item {
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #e0e4e8;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      text-align: left;
+      transition: background 0.15s;
+    }
+    .faq-question:hover { background: #f8f9fb; }
+    .faq-question[aria-expanded="true"] { color: var(--orange); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      transition: transform 0.2s;
+    }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq-answer-inner {
+      padding: 0 20px 18px;
+      color: var(--text-body);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       FINAL CTA
+    ========================================================= */
+    #final-cta {
+      background: var(--dark-bg);
+      padding: 80px 0;
+      text-align: center;
+    }
+    .final-cta-headline {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 720px;
+      margin: 0 auto 16px;
+    }
+    .final-cta-headline em {
+      font-style: normal;
+      color: var(--orange);
+    }
+    .final-cta-sub {
+      color: #8aa3bd;
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+    .final-cta-perks {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px 32px;
+      margin-bottom: 36px;
+    }
+    .final-cta-perks li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #c0d4e8;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .final-cta-perks li::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 900;
+    }
+    .final-cta-guarantee {
+      color: #6a8aaa;
+      font-size: 0.82rem;
+      margin-top: 16px;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    #footer {
+      background: #060d1a;
+      padding: 32px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .footer-logo {
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .footer-logo span { color: var(--orange); }
+    .footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin-bottom: 16px;
+    }
+    .footer-links a {
+      color: #5a7a9a;
+      font-size: 0.8rem;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: #8aa3bd; }
+    .footer-copy {
+      color: #3a5a7a;
+      font-size: 0.75rem;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    /* 1024px */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr 360px; gap: 32px; }
+      .offer-inner { grid-template-columns: 1fr 340px; }
+      .instructor-inner { grid-template-columns: 260px 1fr; }
+    }
+
+    /* 768px – Tablet */
+    @media (max-width: 768px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-image-wrap { order: -1; }
+      .hero-product-img { max-width: 320px; margin: 0 auto; }
+      .hero-cta-wrap { align-items: center; }
+      .hero-trust { justify-content: center; }
+      .hero-badge { right: calc(50% - 145px); top: -10px; }
+      .hero-bullets { align-items: flex-start; text-align: left; }
+
+      .audience-grid { grid-template-columns: 1fr; }
+
+      .learn-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .enrollment-inner { grid-template-columns: 1fr; gap: 40px; }
+      .enrollment-device .img-placeholder { height: 320px; }
+
+      .testimonials-display { grid-template-columns: 1fr; gap: 32px; }
+      .phone-mockup { max-width: 200px; margin: 0 auto; }
+
+      .career-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      .offer-inner { grid-template-columns: 1fr; }
+      .offer-box { position: static; }
+
+      .guarantee-inner { grid-template-columns: 1fr; text-align: center; }
+      .guarantee-badge-wrap { justify-content: center; }
+
+      .instructor-inner { grid-template-columns: 1fr; text-align: center; }
+      .instructor-photo .img-placeholder { height: 280px; }
+      .instructor-stats { justify-content: center; }
+
+      .proof-photo-grid { grid-template-columns: repeat(6, 1fr); }
+      .video-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* 430px – Mobile */
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+
+      #hero { padding: 40px 0 50px; }
+      .hero-headline { font-size: 1.7rem; }
+      .hero-badge { width: 72px; height: 72px; font-size: 0.8rem; }
+      .hero-badge strong { font-size: 1.4rem; }
+
+      .btn-large { font-size: 1rem; padding: 18px 32px; }
+      .btn-primary { padding: 16px 28px; font-size: 0.95rem; }
+
+      .learn-grid { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: repeat(2, 1fr); }
+      .proof-photo-grid { grid-template-columns: repeat(4, 1fr); }
+
+      #audience, #learn, #study-material, #video-lessons,
+      #enrollment, #testimonials, #career, #guarantee,
+      #instructor, #faq, #final-cta { padding: 50px 0; }
+
+      .instructor-stats { flex-wrap: wrap; gap: 12px; }
+      .stat-item { min-width: 80px; padding: 12px 14px; }
+
+      .hero-trust { flex-direction: column; align-items: center; gap: 8px; }
+
+      .offer-price-now { font-size: 2.2rem; }
+    }
+
+    /* =========================================================
+       ANIMATIONS (subtle)
+    ========================================================= */
+    @keyframes pulse-orange {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(232,92,13,0.4); }
+      50%       { box-shadow: 0 0 0 12px rgba(232,92,13,0); }
+    }
+    .btn-primary.pulse { animation: pulse-orange 2s infinite; }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     TRACKING — Centralizado aqui para fácil manutenção
+============================================================= -->
+<script>
+  /* -------------------------------------------------------
+     CONFIGURAÇÃO PRINCIPAL
+     Altere apenas estas variáveis para customizar a página
+  ------------------------------------------------------- */
+  var CONFIG = {
+    CHECKOUT_URL: "INSERIR_CHECKOUT_AQUI",          // URL do checkout
+    PIXEL_FB:     "INSERIR_PIXEL_FACEBOOK_AQUI",    // Pixel do Meta/Facebook
+    GTAG_ID:      "INSERIR_GTAG_AQUI",              // Google Analytics (opcional)
+  };
+
+  /* -------------------------------------------------------
+     Preservar UTMs ao redirecionar para checkout
+  ------------------------------------------------------- */
+  function getCheckoutURL() {
+    var base = CONFIG.CHECKOUT_URL;
+    var params = new URLSearchParams(window.location.search);
+    var utms = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'];
+    var out  = new URLSearchParams();
+    utms.forEach(function(k){ if(params.get(k)) out.set(k, params.get(k)); });
+    var qs = out.toString();
+    return qs ? base + (base.indexOf('?') > -1 ? '&' : '?') + qs : base;
+  }
+
+  function goCheckout(e) {
+    if(e) e.preventDefault();
+    var url = getCheckoutURL();
+    window.location.href = url;
+  }
+
+  /* Meta Pixel — inserido via código para fácil ativação */
+  // (descomente e configure após inserir o Pixel ID)
+  // !function(f,b,e,v,n,t,s){...}(window, document, 'script', ...);
+  // fbq('init', CONFIG.PIXEL_FB);
+  // fbq('track', 'PageView');
+</script>
+
+<!-- ============================================================
+     HEADER
+============================================================= -->
+<header id="site-header" role="banner">
+  <div class="container">
+    <div class="header-logo">
+      Mecânica<span>Pro</span>
+      <!-- [INSERIR LOGO REAL DO PRODUTO] -->
+    </div>
+    <a href="#offer" class="btn-primary header-cta" onclick="goCheckout(event)">
+      Inscreva-se Agora
+    </a>
+  </div>
+</header>
+
+
+<!-- ============================================================
+     HERO
+============================================================= -->
+<section id="hero" aria-label="Seção principal">
+  <div class="container">
+    <div class="hero-inner">
+
+      <!-- Texto -->
+      <div class="hero-text">
+        <span class="hero-label">Treinamento Profissional de Mecânica Automotiva</span>
+        <h1 class="hero-headline">
+          Torne-se um Mecânico Automotivo Profissional —
+          <em>Mesmo Que Você Esteja Começando do Zero</em>
+        </h1>
+        <p class="hero-subheadline">
+          Um treinamento online completo e prático que te ensina tudo que você precisa saber para
+          trabalhar com mecânica automotiva, consertando carros com confiança e competência —
+          no seu ritmo, de onde quiser.
+        </p>
+
+        <ul class="hero-bullets" aria-label="Benefícios principais">
+          <li>Mais de 50 videoaulas passo a passo</li>
+          <li>10 bônus exclusivos inclusos</li>
+          <li>Certificado de conclusão</li>
+          <li>Acesso vitalício ao conteúdo</li>
+          <li>Garantia de 7 dias — sem burocracia</li>
+          <li>Assista no celular, tablet ou computador</li>
+        </ul>
+
+        <div class="hero-cta-wrap">
+          <a href="#offer" class="btn-primary btn-large pulse" onclick="goCheckout(event)">
+            QUERO ME INSCREVER AGORA
+          </a>
+          <div class="hero-trust" role="list" aria-label="Selos de confiança">
+            <span class="trust-item" role="listitem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+              Acesso imediato após o pagamento
+            </span>
+            <span class="trust-item" role="listitem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+              Compra 100% segura
+            </span>
+          </div>
+        </div>
+      </div><!-- /hero-text -->
+
+      <!-- Imagem do produto -->
+      <div class="hero-image-wrap">
+        <div class="hero-badge" aria-label="10 bônus exclusivos inclusos">
+          <strong>10</strong>
+          bônus<br>inclusos
+        </div>
+        <!-- [SUBSTITUIR PELA IMAGEM DO PRODUTO REAL] -->
+        <div class="img-placeholder hero-product-img" style="height:340px; border-radius:12px;" role="img" aria-label="Materiais do curso de mecânica automotiva">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          [IMAGEM DO PRODUTO — KIT DE MATERIAIS DO CURSO]
+        </div>
+        <div class="hero-stars" aria-label="Avaliação 5 estrelas">
+          ★★★★★ <span style="color:#8aa3bd; font-weight:400; margin-left:4px;">Avaliação dos alunos</span>
+        </div>
+      </div><!-- /hero-image-wrap -->
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     AUDIENCE — "Este curso foi feito para você"
+============================================================= -->
+<section id="audience" aria-labelledby="audience-heading">
+  <div class="container">
+    <span class="section-label">Este treinamento é para você?</span>
+    <h2 class="audience-title" id="audience-heading">Este Curso Foi Feito Para Você</h2>
+    <p class="audience-subtitle">Identifique-se com um destes perfis e comece hoje mesmo</p>
+
+    <div class="audience-grid" role="list">
+
+      <div class="audience-card" role="listitem">
+        <div class="audience-card-title">Você é iniciante?</div>
+        <ul aria-label="Perfil iniciante">
+          <li>Nunca trabalhou com mecânica antes</li>
+          <li>Quer aprender do absoluto zero</li>
+          <li>Não tem experiência com ferramentas</li>
+          <li>Quer entender como o carro funciona</li>
+          <li>Busca um novo caminho profissional</li>
+        </ul>
+      </div>
+
+      <div class="audience-card" role="listitem">
+        <div class="audience-card-title">Você já mexe com carros?</div>
+        <ul aria-label="Perfil intermediário">
+          <li>Faz reparos básicos mas quer evoluir</li>
+          <li>Quer atender clientes com mais segurança</li>
+          <li>Precisa se atualizar nas tecnologias atuais</li>
+          <li>Quer formalizar e aprofundar o que já sabe</li>
+          <li>Busca uma certificação para o currículo</li>
+        </ul>
+      </div>
+
+      <div class="audience-card" role="listitem">
+        <div class="audience-card-title">Você quer uma renda extra?</div>
+        <ul aria-label="Perfil empreendedor">
+          <li>Quer aprender uma habilidade lucrativa</li>
+          <li>Busca independência financeira</li>
+          <li>Quer trabalhar no próprio negócio</li>
+          <li>Precisa de uma habilidade com alta demanda</li>
+          <li>Quer uma profissão que sempre terá mercado</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     LEARN — "O que você vai aprender?"
+============================================================= -->
+<section id="learn" aria-labelledby="learn-heading">
+  <div class="container">
+    <span class="section-label" style="color:var(--orange)">Conteúdo do treinamento</span>
+    <h2 class="section-title dark" id="learn-heading">O Que Você Vai Aprender?</h2>
+    <p class="learn-intro">
+      Um currículo completo e prático, desenvolvido para te transformar num profissional
+      confiante — desde o básico até técnicas avançadas de diagnóstico e reparo.
+    </p>
+
+    <div class="learn-grid" role="list">
+      <div class="learn-item" role="listitem">Funcionamento do motor: teoria e prática</div>
+      <div class="learn-item" role="listitem">Sistema de arrefecimento e superaquecimento</div>
+      <div class="learn-item" role="listitem">Sistema elétrico automotivo do zero</div>
+      <div class="learn-item" role="listitem">Diagnóstico de falhas e leitura de códigos OBD</div>
+      <div class="learn-item" role="listitem">Freios: discos, tambores, pastilhas e fluido</div>
+      <div class="learn-item" role="listitem">Sistema de transmissão e câmbio</div>
+      <div class="learn-item" role="listitem">Suspensão, direção e alinhamento</div>
+      <div class="learn-item" role="listitem">Troca de óleo e manutenção preventiva</div>
+      <div class="learn-item" role="listitem">Sistema de combustível e injeção eletrônica</div>
+      <div class="learn-item" role="listitem">Ar-condicionado automotivo</div>
+      <div class="learn-item" role="listitem">Uso correto de ferramentas profissionais</div>
+      <div class="learn-item" role="listitem">Como precificar e atender clientes</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     STUDY MATERIAL — "Material de Apoio"
+============================================================= -->
+<section id="study-material" aria-labelledby="material-heading">
+  <div class="container">
+    <span class="section-label">Incluso no treinamento</span>
+    <h2 class="section-title light" id="material-heading">Material de Apoio</h2>
+    <p class="material-intro">
+      Além das videoaulas, você recebe materiais didáticos completos para estudar no seu ritmo
+      e consultar sempre que precisar.
+    </p>
+
+    <div class="material-scroll" role="list" aria-label="Materiais de apoio inclusos">
+
+      <div class="material-card" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR IMAGEM DO MATERIAL 1]">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/></svg>
+        </div>
+        <div class="material-card-label">Apostila 1</div>
+      </div>
+
+      <div class="material-card" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR IMAGEM DO MATERIAL 2]">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/></svg>
+        </div>
+        <div class="material-card-label">Apostila 2</div>
+      </div>
+
+      <div class="material-card" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR IMAGEM DO MATERIAL 3]">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/></svg>
+        </div>
+        <div class="material-card-label">Apostila 3</div>
+      </div>
+
+      <div class="material-card" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR IMAGEM DO MATERIAL 4]">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/></svg>
+        </div>
+        <div class="material-card-label">Apostila 4</div>
+      </div>
+
+      <div class="material-card" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR IMAGEM DO MATERIAL 5]">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/></svg>
+        </div>
+        <div class="material-card-label">Apostila 5</div>
+      </div>
+
+      <div class="material-card" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR IMAGEM DO MATERIAL 6]">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/></svg>
+        </div>
+        <div class="material-card-label">Apostila 6</div>
+      </div>
+
+      <div class="material-card" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR IMAGEM DO MATERIAL 7]">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/></svg>
+        </div>
+        <div class="material-card-label">Apostila 7</div>
+      </div>
+
+      <div class="material-card" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR IMAGEM DO MATERIAL 8]">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/></svg>
+        </div>
+        <div class="material-card-label">Apostila 8</div>
+      </div>
+
+    </div>
+    <!-- [NOTA: substituir placeholders pelas capas reais das apostilas/materiais] -->
+  </div>
+</section>
+
+
+<!-- ============================================================
+     VIDEO LESSONS — "Videoaulas"
+============================================================= -->
+<section id="video-lessons" aria-labelledby="video-heading">
+  <div class="container">
+    <span class="section-label" style="color:var(--orange)">Conteúdo em vídeo</span>
+    <h2 class="section-title dark" id="video-heading">Videoaulas</h2>
+    <p class="video-intro">
+      Mais de 50 aulas em vídeo gravadas em alta qualidade, com demonstrações reais e
+      explicações claras passo a passo.
+    </p>
+
+    <div class="video-grid" role="list" aria-label="Prévia das videoaulas">
+      <!-- 10 thumbnails de vídeo — [SUBSTITUIR PELAS THUMBNAILS REAIS DAS AULAS] -->
+      <div class="video-thumb" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR THUMBNAIL AULA 1]"><span style="font-size:0.65rem">Aula 1</span></div>
+        <div class="video-play-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="video-thumb" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR THUMBNAIL AULA 2]"><span style="font-size:0.65rem">Aula 2</span></div>
+        <div class="video-play-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-thumb" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR THUMBNAIL AULA 3]"><span style="font-size:0.65rem">Aula 3</span></div>
+        <div class="video-play-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-thumb" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR THUMBNAIL AULA 4]"><span style="font-size:0.65rem">Aula 4</span></div>
+        <div class="video-play-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-thumb" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR THUMBNAIL AULA 5]"><span style="font-size:0.65rem">Aula 5</span></div>
+        <div class="video-play-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-thumb" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR THUMBNAIL AULA 6]"><span style="font-size:0.65rem">Aula 6</span></div>
+        <div class="video-play-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-thumb" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR THUMBNAIL AULA 7]"><span style="font-size:0.65rem">Aula 7</span></div>
+        <div class="video-play-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-thumb" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR THUMBNAIL AULA 8]"><span style="font-size:0.65rem">Aula 8</span></div>
+        <div class="video-play-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-thumb" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR THUMBNAIL AULA 9]"><span style="font-size:0.65rem">Aula 9</span></div>
+        <div class="video-play-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-thumb" role="listitem">
+        <div class="img-placeholder" role="img" aria-label="[INSERIR THUMBNAIL AULA 10]"><span style="font-size:0.65rem">+40 aulas</span></div>
+        <div class="video-play-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+    </div>
+
+    <div style="text-align:center">
+      <div class="video-count-badge" aria-label="Mais de 50 videoaulas disponíveis">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--orange)" aria-hidden="true"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12zM8 15l8-5-8-5v10z"/></svg>
+        Mais de 50 videoaulas disponíveis
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ENROLLMENT BENEFITS — "O que você recebe ao se inscrever"
+============================================================= -->
+<section id="enrollment" aria-labelledby="enrollment-heading">
+  <div class="container">
+    <div class="enrollment-inner">
+
+      <div class="enrollment-left">
+        <span class="section-label enrollment-label">Tudo que está incluso</span>
+        <h2 class="enrollment-title" id="enrollment-heading">
+          O Que Você Recebe ao Se Inscrever
+        </h2>
+        <p class="enrollment-intro">
+          Ao entrar no treinamento, você recebe acesso completo ao curso principal e a todos os bônus.
+        </p>
+
+        <p style="font-size:0.82rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:var(--orange); margin-bottom:12px;">
+          Treinamento principal
+        </p>
+        <ul class="enrollment-list" aria-label="Conteúdo do treinamento principal">
+          <li>Mais de 50 videoaulas em alta qualidade</li>
+          <li>8 apostilas de apoio para download</li>
+          <li>Acesso vitalício — estude no seu ritmo</li>
+          <li>Assistência por dispositivos móveis e desktop</li>
+          <li>Certificado de conclusão do curso</li>
+          <li>Atualizações futuras inclusas sem custo adicional</li>
+        </ul>
+
+        <div class="enrollment-bonus-block" aria-label="Lista de bônus exclusivos">
+          <div class="bonus-block-title">🎁 10 Bônus Exclusivos Inclusos</div>
+          <ul class="bonus-list">
+            <li>[INSERIR TÍTULO DO BÔNUS 1]</li>
+            <li>[INSERIR TÍTULO DO BÔNUS 2]</li>
+            <li>[INSERIR TÍTULO DO BÔNUS 3]</li>
+            <li>[INSERIR TÍTULO DO BÔNUS 4]</li>
+            <li>[INSERIR TÍTULO DO BÔNUS 5]</li>
+            <li>[INSERIR TÍTULO DO BÔNUS 6]</li>
+            <li>[INSERIR TÍTULO DO BÔNUS 7]</li>
+            <li>[INSERIR TÍTULO DO BÔNUS 8]</li>
+            <li>[INSERIR TÍTULO DO BÔNUS 9]</li>
+            <li>[INSERIR TÍTULO DO BÔNUS 10]</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:28px;">
+          <a href="#offer" class="btn-primary" onclick="goCheckout(event)">
+            QUERO ME INSCREVER AGORA
+          </a>
+        </div>
+      </div>
+
+      <div class="enrollment-image">
+        <div class="enrollment-device">
+          <!-- [SUBSTITUIR PELA IMAGEM DO DISPOSITIVO/PLATAFORMA DO CURSO] -->
+          <div class="img-placeholder" role="img" aria-label="[IMAGEM — plataforma do curso no tablet mostrando o conteúdo]">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 13H4V6h16v11zM8 15l8-4.5L8 6v9z"/></svg>
+            [IMAGEM DO TABLET/DISPOSITIVO COM A PLATAFORMA DO CURSO]
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TESTIMONIALS — "O que nossos alunos estão dizendo"
+============================================================= -->
+<section id="testimonials" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <span class="section-label">Resultados reais</span>
+    <h2 class="section-title light" id="testimonials-heading">O Que Nossos Alunos Estão Dizendo</h2>
+    <p class="testimonials-subtitle">
+      Veja o que quem já fez o treinamento está falando sobre os resultados obtidos.
+    </p>
+
+    <div class="testimonials-display">
+
+      <div class="testimonials-phone">
+        <!-- [SUBSTITUIR PELA IMAGEM DE TELA DO CELULAR COM COMENTÁRIOS REAIS] -->
+        <div class="phone-mockup">
+          <div class="img-placeholder" role="img" aria-label="[IMAGEM — screenshot de comentários reais no celular]">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+            [SCREENSHOT DOS COMENTÁRIOS REAIS]
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials-list" aria-label="Depoimentos de alunos">
+        <!--
+          ATENÇÃO: NÃO INVENTAR DEPOIMENTOS.
+          Substitua os placeholders abaixo pelos depoimentos reais dos alunos
+          assim que estiverem disponíveis.
+        -->
+        <div class="testimonial-placeholder" role="status" aria-label="Placeholder de depoimento">
+          [INSERIR DEPOIMENTO REAL DO ALUNO 1]<br><br>
+          <strong>[NOME DO ALUNO], [CIDADE/ESTADO]</strong>
+        </div>
+        <div class="testimonial-placeholder" role="status" aria-label="Placeholder de depoimento">
+          [INSERIR DEPOIMENTO REAL DO ALUNO 2]<br><br>
+          <strong>[NOME DO ALUNO], [CIDADE/ESTADO]</strong>
+        </div>
+        <div class="testimonial-placeholder" role="status" aria-label="Placeholder de depoimento">
+          [INSERIR DEPOIMENTO REAL DO ALUNO 3]<br><br>
+          <strong>[NOME DO ALUNO], [CIDADE/ESTADO]</strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CAREER — "Aprenda uma profissão com alta demanda"
+============================================================= -->
+<section id="career" aria-labelledby="career-heading">
+  <div class="container">
+    <div class="career-inner">
+
+      <div class="career-content">
+        <span class="section-label" style="color:var(--orange)">Oportunidade profissional</span>
+        <h2 class="career-title" id="career-heading">
+          Aprenda uma Profissão com Alta Demanda — em Qualquer Lugar do Brasil
+        </h2>
+        <p class="career-body">
+          Mecânica automotiva é uma das profissões mais sólidas e com maior demanda no mercado.
+          Não importa onde você mora: sempre haverá carros precisando de manutenção e profissionais
+          qualificados são escassos. Quem sabe o que está fazendo não falta trabalho.
+        </p>
+        <ul class="career-highlights" aria-label="Vantagens da profissão">
+          <li>Alta demanda em todo o território nacional</li>
+          <li>Possibilidade de trabalhar de forma autônoma</li>
+          <li>Renda com potencial de crescimento contínuo</li>
+          <li>Profissão resistente a crises econômicas</li>
+          <li>Certificado de conclusão para o seu currículo</li>
+        </ul>
+        <a href="#offer" class="btn-primary" onclick="goCheckout(event)">
+          QUERO APRENDER AGORA
+        </a>
+      </div>
+
+      <div class="career-image">
+        <div class="career-cert-wrap">
+          <!-- [SUBSTITUIR PELA IMAGEM REAL DO CERTIFICADO DO CURSO] -->
+          <div class="img-placeholder" role="img" aria-label="[IMAGEM DO CERTIFICADO DO CURSO]" style="height:280px;">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            [IMAGEM DO CERTIFICADO DO CURSO]
+          </div>
+          <p class="career-cert-note">
+            [INSERIR INFORMAÇÃO REAL SOBRE O CERTIFICADO — tipo de reconhecimento, validade, etc.]
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     STUDENT PROOF — Grade de alunos formados
+============================================================= -->
+<section id="student-proof" aria-label="Prova social — alunos formados">
+  <div class="proof-photo-grid" aria-hidden="true">
+    <!-- 30 células de foto — [SUBSTITUIR PELAS FOTOS REAIS DOS ALUNOS] -->
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+    <div class="proof-photo-item"><div class="img-placeholder"></div></div>
+  </div>
+  <div class="proof-overlay">
+    <div class="proof-text-block">
+      <div class="proof-number">
+        Mais de <span>[INSERIR NÚMERO REAL DE ALUNOS]</span>
+      </div>
+      <div class="proof-label">Alunos já concluíram o curso</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     OFFER — Seção de oferta e preço
+============================================================= -->
+<section id="offer" aria-labelledby="offer-heading">
+  <div class="container">
+
+    <div style="text-align:center; margin-bottom:48px;">
+      <span class="section-label" style="font-size:0.8rem;">Oferta especial</span>
+      <h2 class="section-title dark" id="offer-heading">Treinamento Profissional de Mecânica Automotiva</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="offer-inner">
+
+      <!-- Coluna esquerda — o que está incluso -->
+      <div class="offer-left">
+        <span class="section-label offer-label-tag">O que você leva hoje</span>
+        <h3 class="offer-headline">
+          Acesso Completo ao Curso + 10 Bônus Exclusivos
+        </h3>
+        <p class="offer-subheadline">
+          Tudo que você precisa para se tornar um mecânico automotivo profissional,
+          num único pacote com preço que você não vai encontrar em lugar nenhum.
+        </p>
+
+        <p class="offer-includes-title">Treinamento principal inclui:</p>
+        <ul class="offer-includes-list" aria-label="Itens inclusos no treinamento principal">
+          <li>Mais de 50 videoaulas em alta qualidade</li>
+          <li>8 apostilas de apoio para download</li>
+          <li>Acesso vitalício — estude quando quiser</li>
+          <li>Compatível com celular, tablet e computador</li>
+          <li>Certificado de conclusão do treinamento</li>
+          <li>Atualizações futuras sem custo adicional</li>
+        </ul>
+
+        <p class="offer-bonus-title" style="margin-top:24px;">
+          + 10 Bônus Exclusivos (valor separado: [INSERIR VALOR])
+        </p>
+        <ul class="offer-bonus-list" aria-label="Bônus inclusos">
+          <li>[INSERIR TÍTULO DO BÔNUS 1]</li>
+          <li>[INSERIR TÍTULO DO BÔNUS 2]</li>
+          <li>[INSERIR TÍTULO DO BÔNUS 3]</li>
+          <li>[INSERIR TÍTULO DO BÔNUS 4]</li>
+          <li>[INSERIR TÍTULO DO BÔNUS 5]</li>
+          <li>[INSERIR TÍTULO DO BÔNUS 6]</li>
+          <li>[INSERIR TÍTULO DO BÔNUS 7]</li>
+          <li>[INSERIR TÍTULO DO BÔNUS 8]</li>
+          <li>[INSERIR TÍTULO DO BÔNUS 9]</li>
+          <li>[INSERIR TÍTULO DO BÔNUS 10]</li>
+        </ul>
+      </div>
+
+      <!-- Coluna direita — caixa de preço -->
+      <div class="offer-right">
+        <div class="offer-box" role="region" aria-label="Caixa de compra">
+
+          <div class="offer-box-header">
+            <div class="offer-box-label">Acesso completo ao treinamento</div>
+            <div class="offer-box-title">
+              Curso Completo de Mecânica Automotiva
+            </div>
+          </div>
+
+          <div class="offer-box-body">
+            <!-- [SUBSTITUIR PELA IMAGEM DO PRODUTO/PLATAFORMA] -->
+            <div class="offer-box-device-img">
+              <div class="img-placeholder" role="img" aria-label="[IMAGEM — produto ou plataforma do curso]" style="height:140px;">
+                [IMAGEM DO PRODUTO]
+              </div>
+            </div>
+
+            <ul class="offer-box-checklist" aria-label="Resumo do que está incluso">
+              <li>+50 videoaulas</li>
+              <li>8 apostilas de apoio</li>
+              <li>10 bônus exclusivos</li>
+              <li>Certificado de conclusão</li>
+              <li>Acesso vitalício</li>
+              <li>Garantia de 7 dias</li>
+            </ul>
+
+            <div class="offer-price-block">
+              <div class="offer-price-was">De: R$ [VALOR ORIGINAL]</div>
+              <div class="offer-price-now-label">Hoje por apenas</div>
+              <div class="offer-price-now" aria-label="Preço: R$ [VALOR PROMOCIONAL]">
+                <small>R$</small>[VALOR]
+              </div>
+              <div class="offer-price-sub">
+                Pagamento único — sem mensalidade
+                <!-- Ou: em até [X]x de R$ [VALOR] -->
+              </div>
+            </div>
+
+            <a href="#" class="btn-primary offer-box-cta pulse" onclick="goCheckout(event)" aria-label="Comprar agora — acesso imediato">
+              QUERO ACESSO AGORA
+            </a>
+
+            <div class="offer-box-security">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+              Compra 100% segura · Acesso imediato
+            </div>
+          </div>
+        </div><!-- /offer-box -->
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GUARANTEE — "Garantia de devolução do dinheiro"
+============================================================= -->
+<section id="guarantee" aria-labelledby="guarantee-heading">
+  <div class="container">
+    <div class="guarantee-inner">
+
+      <div class="guarantee-badge-wrap">
+        <div class="guarantee-badge" role="img" aria-label="Garantia de 7 dias">
+          <div class="guarantee-badge-days">7</div>
+          <div class="guarantee-badge-text">dias de<br>garantia</div>
+        </div>
+      </div>
+
+      <div class="guarantee-content">
+        <h2 class="guarantee-title" id="guarantee-heading">
+          Zero Risco — <span>Garantia Total de Devolução</span>
+        </h2>
+        <p class="guarantee-text">
+          Você tem <strong>7 dias completos</strong> para testar o treinamento sem nenhum risco.
+          Acesse todo o conteúdo, assista às aulas, faça o download dos materiais e veja na prática
+          o valor do que você está recebendo. Se por qualquer motivo você não ficar satisfeito,
+          basta enviar um e-mail e você receberá o reembolso integral — sem perguntas,
+          sem burocracia, sem complicação.
+        </p>
+        <p class="guarantee-text" style="margin-top:12px;">
+          Essa é a nossa forma de demonstrar a confiança total que temos no treinamento.
+          O risco é completamente nosso, não seu.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     INSTRUCTOR — "Conheça [NOME DO INSTRUTOR]"
+============================================================= -->
+<section id="instructor" aria-labelledby="instructor-heading">
+  <div class="container">
+    <div class="instructor-inner">
+
+      <div class="instructor-photo-wrap">
+        <div class="instructor-photo">
+          <!-- [SUBSTITUIR PELA FOTO REAL DO INSTRUTOR] -->
+          <div class="img-placeholder" role="img" aria-label="[FOTO DO INSTRUTOR]">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            [FOTO DO INSTRUTOR]
+          </div>
+        </div>
+      </div>
+
+      <div class="instructor-content">
+        <span class="section-label" style="color:var(--orange)">Seu instrutor</span>
+        <h2 class="instructor-name" id="instructor-heading">[NOME DO INSTRUTOR]</h2>
+        <div class="instructor-title">
+          [TÍTULO/ESPECIALIZAÇÃO DO INSTRUTOR]
+        </div>
+
+        <p class="instructor-bio">
+          [INSERIR BIOGRAFIA REAL DO INSTRUTOR — inclua: anos de experiência, formação,
+          onde trabalhou, especialidades, conquistas profissionais relevantes e motivação
+          para criar este treinamento.]
+        </p>
+
+        <div class="instructor-stats" aria-label="Credenciais do instrutor">
+          <div class="stat-item">
+            <span class="stat-value">[X]+</span>
+            <span class="stat-label">anos de<br>experiência</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">[X]+</span>
+            <span class="stat-label">alunos<br>formados</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">[X]+</span>
+            <span class="stat-label">carros<br>atendidos</span>
+          </div>
+        </div>
+
+        <a href="#offer" class="btn-primary" onclick="goCheckout(event)">
+          QUERO APRENDER COM [NOME DO INSTRUTOR]
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FAQ — "Perguntas Frequentes"
+============================================================= -->
+<section id="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <span class="section-label">Dúvidas?</span>
+    <h2 class="section-title light" id="faq-heading">Perguntas Frequentes</h2>
+    <p class="faq-subtitle">
+      Encontre respostas para as dúvidas mais comuns antes de tomar a sua decisão.
+    </p>
+
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
+          Preciso ter algum conhecimento prévio de mecânica para fazer o curso?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a1" role="region">
+          <div class="faq-answer-inner">
+            Não. O treinamento foi desenvolvido para iniciantes completos. Você aprenderá desde
+            o básico do funcionamento de um carro até técnicas de diagnóstico e reparo mais avançadas,
+            passo a passo. Se você nunca colocou a mão num motor, está no lugar certo.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
+          Por quanto tempo terei acesso ao conteúdo?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a2" role="region">
+          <div class="faq-answer-inner">
+            Seu acesso é vitalício. Após a compra, o conteúdo fica disponível para você pelo tempo
+            que quiser — você pode assistir, rever e baixar os materiais quantas vezes precisar,
+            no seu próprio ritmo.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
+          O curso funciona no celular?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a3" role="region">
+          <div class="faq-answer-inner">
+            Sim. O treinamento é acessível em qualquer dispositivo — celular, tablet ou computador.
+            Você pode estudar de onde estiver, inclusive baixar os materiais para consulta offline.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
+          Como funciona a garantia de 7 dias?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a4" role="region">
+          <div class="faq-answer-inner">
+            Você tem 7 dias corridos após a compra para testar o curso sem nenhum risco. Se por
+            qualquer motivo você não estiver satisfeito, basta entrar em contato com o suporte e
+            você receberá o reembolso integral do valor pago — sem perguntas e sem complicação.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
+          O certificado tem algum reconhecimento profissional?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a5" role="region">
+          <div class="faq-answer-inner">
+            [INSERIR INFORMAÇÃO REAL SOBRE O TIPO DE CERTIFICADO — escopo, validade e
+            reconhecimento correspondente ao produto brasileiro.]
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">
+          Quais são as formas de pagamento disponíveis?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a6" role="region">
+          <div class="faq-answer-inner">
+            [INSERIR FORMAS DE PAGAMENTO DISPONÍVEIS — Pix, cartão de crédito, boleto, parcelamento, etc.]
+            O pagamento é processado com total segurança através de plataforma certificada.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a7">
+          Quando terei acesso ao conteúdo após a compra?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a7" role="region">
+          <div class="faq-answer-inner">
+            O acesso é liberado imediatamente após a confirmação do pagamento. Você receberá
+            um e-mail com as instruções de acesso e poderá começar as aulas em minutos.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a8">
+          Terei suporte durante o curso?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a8" role="region">
+          <div class="faq-answer-inner">
+            [INSERIR INFORMAÇÃO REAL SOBRE O SUPORTE DISPONÍVEL — e-mail, comunidade, prazo de resposta, etc.]
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FINAL CTA — "Pronto para se tornar um mecânico certificado?"
+============================================================= -->
+<section id="final-cta" aria-labelledby="final-cta-heading">
+  <div class="container">
+
+    <h2 class="final-cta-headline" id="final-cta-heading">
+      Pronto para se Tornar um <em>Mecânico Certificado?</em>
+    </h2>
+    <p class="final-cta-sub">
+      Dê o primeiro passo hoje. Acesse o treinamento completo, aprenda no seu ritmo e
+      saia daqui com uma habilidade que o mercado valoriza — e que ninguém tira de você.
+    </p>
+
+    <ul class="final-cta-perks" aria-label="Resumo dos benefícios">
+      <li>Mais de 50 videoaulas</li>
+      <li>10 bônus exclusivos</li>
+      <li>Certificado de conclusão</li>
+      <li>Acesso vitalício</li>
+      <li>Garantia de 7 dias</li>
+    </ul>
+
+    <a href="#" class="btn-primary btn-large pulse" onclick="goCheckout(event)" aria-label="Inscreva-se agora no curso de mecânica automotiva">
+      QUERO ME INSCREVER AGORA
+    </a>
+
+    <p class="final-cta-guarantee">
+      🔒 Compra 100% segura &nbsp;·&nbsp; Acesso imediato &nbsp;·&nbsp; Garantia de 7 dias sem risco
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================= -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logo">Mecânica<span>Pro</span></div>
+
+    <nav class="footer-links" aria-label="Links do rodapé">
+      <a href="[INSERIR LINK — POLÍTICA DE PRIVACIDADE]">Política de Privacidade</a>
+      <a href="[INSERIR LINK — TERMOS DE USO]">Termos de Uso</a>
+      <a href="[INSERIR LINK — CONTATO/SUPORTE]">Contato</a>
+      <a href="[INSERIR LINK — POLÍTICA DE REEMBOLSO]">Política de Reembolso</a>
+    </nav>
+
+    <p class="footer-copy">
+      © <span id="footer-year"></span> [INSERIR NOME DA EMPRESA / PRODUTOR]. Todos os direitos reservados.<br>
+      [INSERIR CNPJ/RAZÃO SOCIAL SE APLICÁVEL]<br>
+      <small style="display:block; margin-top:6px; font-size:0.7rem; color:#2a4a6a;">
+        Este produto é vendido com garantia de satisfação de 7 dias. Resultados individuais podem variar.
+        [INSERIR QUALQUER AVISO LEGAL NECESSÁRIO]
+      </small>
+    </p>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================= -->
+<script>
+  /* ---- Ano no footer ---- */
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  /* ---- FAQ Accordion ---- */
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      var answerId = this.getAttribute('aria-controls');
+      var answer   = document.getElementById(answerId);
+
+      /* Fechar todos os outros */
+      document.querySelectorAll('.faq-question').forEach(function(other) {
+        if (other !== btn) {
+          other.setAttribute('aria-expanded', 'false');
+          var otherId = other.getAttribute('aria-controls');
+          var otherAns = document.getElementById(otherId);
+          if (otherAns) otherAns.style.maxHeight = null;
+        }
+      });
+
+      /* Toggle o atual */
+      if (expanded) {
+        this.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = null;
+      } else {
+        this.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ---- Lazy load para img-placeholder (quando imgs reais forem inseridas) ---- */
+  if ('IntersectionObserver' in window) {
+    var lazyImgs = document.querySelectorAll('img[data-src]');
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var img = entry.target;
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+          io.unobserve(img);
+        }
+      });
+    }, { rootMargin: '200px' });
+    lazyImgs.forEach(function(img) { io.observe(img); });
+  }
+
+  /* ---- Smooth scroll para âncoras ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      /* Se o href leva ao checkout, deixa o goCheckout() tratar */
+      if (href === '#' || href === '#offer') return;
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
