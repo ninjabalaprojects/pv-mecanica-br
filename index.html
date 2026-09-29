@@ -10,206 +10,306 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="[INSERIR URL IMAGEM OG]" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Preload hero image -->
+  <link rel="preload" as="image" href="assets/hero-mockup.png" fetchpriority="high" />
+
+  <!-- Fonts: Bebas Neue (headings) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
-    /* ==============================================
+    /* ================================================
        RESET
-    ============================================== */
+    ================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, sans-serif; background: #fff; color: #0f0f0f; overflow-x: hidden; line-height: 1.6; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #fff;
+      color: #13151c;
+      overflow-x: hidden;
+      line-height: 1.6;
+      padding-top: 34px; /* height of fixed flash banner */
+    }
     img { max-width: 100%; height: auto; display: block; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
-    button { cursor: pointer; font-family: inherit; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
 
-    /* ==============================================
-       TOKENS
-    ============================================== */
+    /* ================================================
+       DESIGN TOKENS — idênticos à página original
+    ================================================ */
     :root {
-      --orange:     #f97316;
-      --orange-hov: #ea6a0a;
-      --dark:       #0c0c0c;
-      --dark2:      #111111;
-      --dark3:      #181818;
-      --card-bg:    #1a1a1a;
-      --border:     #2a2a2a;
-      --white:      #ffffff;
-      --gray-100:   #f8f8f8;
-      --gray-200:   #f0f0f0;
-      --gray-500:   #6b7280;
-      --gray-700:   #374151;
-      --yellow:     #eab308;
-      --green:      #22c55e;
-      --red:        #ef4444;
-      --max-w:      1100px;
+      /* Brand (dark navy — bg-brand no original) */
+      --brand:          #1a1e2d;
+      --brand-deep:     #0f1019;
+      --brand-soft:     #f5f5f7;
+
+      /* Accent */
+      --gold:           #d97706;   /* oklch(70% .22 35) */
+      --gold-fg:        #0f0f00;
+
+      /* CTA / Flash (red — bg-[#E11D48] e bg-red-600 no original) */
+      --red:            #E11D48;
+      --red-hover:      #BE123C;
+      --red-cta:        #dc2626;
+      --red-cta-hover:  #b91c1c;
+
+      /* Neutrals */
+      --white:          #ffffff;
+      --muted:          #f5f5f7;   /* oklch(96.8%) */
+      --card:           #ffffff;
+      --border:         #e4e4e7;
+      --muted-fg:       #71717a;
+      --dark-card:      #0a0a0a;   /* offer box */
+      --dark-border:    #2a2a2a;
+
+      /* Green (success) */
+      --green:          #10b981;
+
+      /* Layout */
+      --max-w:          68rem;     /* 1088px — igual ao .shell original */
+      --pad-x:          1.25rem;
     }
 
-    /* ==============================================
+    /* ================================================
        UTILITIES
-    ============================================== */
-    .w { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-
-    .label {
-      display: inline-block;
-      font-size: 0.7rem; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--orange); margin-bottom: 10px;
+    ================================================ */
+    .shell {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: var(--pad-x);
     }
 
+    /* Section label (orange-text above sections) */
+    .section-tag {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    /* Section title — Bebas Neue, uppercase, same as .section-title */
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--brand-deep);
+    }
+    .section-title.on-dark { color: var(--white); }
+
+    /* Section subtitle */
+    .section-sub {
+      color: var(--muted-fg);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* Soft card — identical to .soft-card in original */
+    .soft-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0.875rem;
+      box-shadow: 0 1px 2px rgba(31,37,90,0.05);
+    }
+
+    /* Buttons */
     .btn {
-      display: inline-block;
-      background: var(--orange);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--red-cta);
       color: #fff;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       padding: 16px 36px;
-      border-radius: 6px;
+      border-radius: 12px;
       border: none;
-      transition: background .15s, transform .1s;
-      text-align: center;
       cursor: pointer;
-    }
-    .btn:hover  { background: var(--orange-hov); transform: translateY(-1px); }
-    .btn:active { transform: none; }
-    .btn-lg { font-size: 1.15rem; padding: 20px 48px; }
-    .btn-full { width: 100%; display: block; }
-
-    @keyframes glow {
-      0%,100% { box-shadow: 0 0 0 0 rgba(249,115,22,.4); }
-      50%      { box-shadow: 0 0 0 14px rgba(249,115,22,0); }
-    }
-    .btn-glow { animation: glow 2.2s infinite; }
-
-    .check { color: var(--orange); font-weight: 900; margin-right: 8px; flex-shrink: 0; }
-    .star  { color: var(--yellow); margin-right: 8px; flex-shrink: 0; }
-
-    /* Section spacing */
-    .sec { padding: 80px 0; }
-    .sec-sm { padding: 60px 0; }
-
-    /* Headings */
-    h1, h2, h3 { font-family: 'Outfit', sans-serif; line-height: 1.15; }
-
-    /* Dark section */
-    .bg-dark  { background: var(--dark); }
-    .bg-dark2 { background: var(--dark2); }
-    .bg-dark3 { background: var(--dark3); }
-    .bg-light { background: var(--gray-100); }
-    .bg-white { background: #fff; }
-
-    /* ==============================================
-       FLASH SALE BANNER
-    ============================================== */
-    #flash-banner {
-      background: var(--orange);
-      padding: 10px 24px;
+      transition: background .15s, transform .1s, box-shadow .15s;
       text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 200;
+      line-height: 1;
+    }
+    .btn:hover  { background: var(--red-cta-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(220,38,38,.35); }
+    .btn:active { transform: none; box-shadow: none; }
+    .btn-full { width: 100%; display: flex; }
+    .btn-sm { font-size: 1.15rem; padding: 12px 28px; }
+
+    @keyframes glow-red {
+      0%,100% { box-shadow: 0 0 0 0 rgba(220,38,38,.45); }
+      50%      { box-shadow: 0 0 0 16px rgba(220,38,38,0); }
+    }
+    .btn-glow { animation: glow-red 2.2s infinite; }
+
+    /* Check badges (gold circle) */
+    .chk {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #f59e0b, #d97706);
+      box-shadow: 0 3px 6px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.22);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    /* Star bullet */
+    .star { color: var(--gold); flex-shrink: 0; }
+
+    /* Section padding */
+    .sec { padding: 80px 0; }
+
+    /* ================================================
+       FLASH SALE BANNER — #E11D48, fixo no topo do viewport
+    ================================================ */
+    #flash-banner {
+      background: var(--red);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 300;
+      padding: 0 12px;
     }
     .flash-inner {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      gap: 10px;
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      height: 32px;
+      flex-wrap: nowrap;
+      overflow: hidden;
     }
-    .flash-badge {
-      background: #fff;
-      color: var(--orange);
-      font-family: 'Outfit', sans-serif;
-      font-weight: 900;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 4px;
-    }
-    .flash-text {
+    .flash-tag {
+      background: rgba(0,0,0,.2);
+      border: 1px solid rgba(255,255,255,.2);
       color: #fff;
-      font-weight: 700;
-      font-size: 0.88rem;
-      letter-spacing: 0.03em;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      padding: 1px 7px;
+      border-radius: 3px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .flash-copy {
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .flash-timer {
       display: flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(0,0,0,.2);
-      border-radius: 6px;
-      padding: 4px 12px;
-    }
-    .flash-timer span {
+      gap: 2px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
       color: #fff;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 900;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
-      min-width: 22px;
-      display: inline-block;
-      text-align: center;
+      flex-shrink: 0;
     }
-    .flash-timer small {
-      color: rgba(255,255,255,.7);
-      font-size: 0.65rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .flash-sep { color: rgba(255,255,255,.6); font-weight: 900; }
+    .flash-timer .sep { opacity: .45; }
 
-    /* ==============================================
-       HERO
-    ============================================== */
+    /* Mobile: oculta o texto descritivo, mantém tag + timer */
+    @media (max-width: 480px) {
+      .flash-copy { display: none; }
+      .flash-inner { gap: 8px; }
+    }
+
+    /* ================================================
+       HERO SECTION — bg-brand (dark navy)
+    ================================================ */
     #hero {
-      background: var(--dark);
-      padding: 72px 0 80px;
+      background: var(--brand);
+      padding: 56px 0 64px;
+      overflow: hidden;
+      position: relative;
+    }
+    #hero::after {
+      /* subtle gradient overlay like the original */
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 75% 40%, rgba(217,119,6,.06) 0%, transparent 65%);
+      pointer-events: none;
     }
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 480px;
       gap: 56px;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
+
+    /* Kicker badge */
     .hero-kicker {
       display: inline-block;
-      background: var(--orange);
-      color: #fff;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
-      font-size: 0.72rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8rem;
       letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 4px;
-      margin-bottom: 22px;
-    }
-    .hero-h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
-      font-weight: 900;
       color: var(--white);
-      line-height: 1.1;
-      letter-spacing: -0.01em;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 4px;
+      padding: 4px 12px;
       margin-bottom: 20px;
     }
-    .hero-h1 em { font-style: normal; color: var(--orange); }
+
+    /* Main headline — Bebas Neue, very large */
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 0.96;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    /* Gold highlight — "Mesmo Começando do Zero" */
+    .hero-h1 .gold-hi {
+      background: var(--gold);
+      color: var(--white);
+      padding: 0 6px;
+      display: inline;
+      /* box-decoration-clone so highlight wraps correctly on multiline */
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
 
     .hero-sub {
-      color: #9ca3af;
-      font-size: 1rem;
+      color: rgba(255,255,255,.75);
+      font-size: 0.9rem;
       line-height: 1.65;
-      margin-bottom: 28px;
+      max-width: 480px;
+      margin-bottom: 24px;
     }
+    .hero-sub strong { color: var(--white); }
+
+    /* 4 bullet items */
     .hero-bullets {
       display: flex;
       flex-direction: column;
@@ -219,146 +319,164 @@
     .hero-bullets li {
       display: flex;
       align-items: center;
-      color: var(--white);
-      font-size: 0.95rem;
+      gap: 10px;
+      color: rgba(255,255,255,.85);
+      font-size: 0.88rem;
       font-weight: 500;
     }
-    .hero-cta-wrap {
+
+    /* CTA wrap */
+    .hero-cta-block {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 10px;
     }
-    .hero-trust {
-      color: #6b7280;
-      font-size: 0.8rem;
+    .hero-trust-line {
+      font-size: 0.72rem;
       font-weight: 500;
+      color: rgba(255,255,255,.5);
+      letter-spacing: 0.04em;
     }
 
-    /* Hero image col */
-    .hero-img-col { position: relative; }
-    .hero-img-col img {
-      width: 100%;
-      border-radius: 10px;
-    }
+    /* Hero right — product image */
+    .hero-img { width: 100%; border-radius: 12px; }
 
-    /* ==============================================
-       AUDIENCE
-    ============================================== */
-    #audience { background: var(--gray-100); padding: 80px 0; }
-    .audience-wrap { max-width: 700px; margin: 0 auto; text-align: center; }
-    .audience-h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      font-weight: 900;
-      color: var(--dark);
-      margin-bottom: 28px;
+    /* ================================================
+       AUDIENCE — bg-muted
+    ================================================ */
+    #audience {
+      background: var(--muted);
+      padding: 80px 0;
+    }
+    .audience-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
     }
     .audience-list {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 10px;
+      margin-top: 28px;
       text-align: left;
     }
     .audience-list li {
       display: flex;
       align-items: flex-start;
-      gap: 0;
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
+      gap: 12px;
       padding: 14px 18px;
-      font-size: 0.95rem;
-      color: var(--gray-700);
-      font-weight: 500;
-    }
-    .audience-list li::before {
-      content: '✓';
-      color: var(--orange);
-      font-weight: 900;
-      margin-right: 12px;
-      flex-shrink: 0;
-      font-size: 1rem;
+      font-size: 0.88rem;
+      color: var(--muted-fg);
+      line-height: 1.45;
     }
 
-    /* ==============================================
-       LEARN
-    ============================================== */
-    #learn { background: var(--dark); padding: 80px 0; text-align: center; }
-    .learn-h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      font-weight: 900;
-      color: var(--white);
-      margin-bottom: 12px;
+    /* ================================================
+       LEARN — bg-brand (dark)
+    ================================================ */
+    #learn {
+      background: var(--brand);
+      padding: 80px 0;
+      text-align: center;
     }
     .learn-intro {
-      color: #9ca3af;
-      font-size: 0.95rem;
-      max-width: 580px;
-      margin: 0 auto 36px;
+      color: rgba(255,255,255,.6);
+      font-size: 0.9rem;
+      max-width: 560px;
+      margin: 12px auto 36px;
     }
     .learn-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 8px;
       text-align: left;
     }
     .learn-item {
       display: flex;
       align-items: flex-start;
-      background: #1a1a1a;
-      border: 1px solid #272727;
-      border-radius: 8px;
+      gap: 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 10px;
       padding: 14px 16px;
-      color: #d1d5db;
-      font-size: 0.88rem;
-      font-weight: 500;
+      color: rgba(255,255,255,.8);
+      font-size: 0.82rem;
       line-height: 1.45;
-      gap: 0;
+      font-weight: 500;
     }
-    .learn-item::before {
-      content: '✓';
-      color: var(--orange);
-      font-weight: 900;
-      margin-right: 10px;
+
+    /* ================================================
+       WORKBOOK — bg-muted + MARQUEE
+    ================================================ */
+    #workbook {
+      background: var(--muted);
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    /* Marquee container */
+    .marquee-wrap {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      margin-top: 32px;
+    }
+    /* Fade edges */
+    .marquee-wrap::before,
+    .marquee-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-wrap::before { left: 0;  background: linear-gradient(to right, var(--muted), transparent); }
+    .marquee-wrap::after  { right: 0; background: linear-gradient(to left,  var(--muted), transparent); }
+
+    .marquee-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: slide-left 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    @keyframes slide-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-img {
+      height: 200px;
+      width: auto;
+      border-radius: 10px;
       flex-shrink: 0;
-      font-size: 0.9rem;
-      margin-top: 1px;
+      object-fit: cover;
+      box-shadow: 0 4px 16px rgba(0,0,0,.1);
     }
 
-    /* ==============================================
-       WORKBOOK (Support Material)
-    ============================================== */
-    #workbook { background: var(--gray-100); padding: 80px 0; text-align: center; }
-    .workbook-h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      font-weight: 900;
-      color: var(--dark);
-      margin-bottom: 32px;
-    }
-    .workbook-img { border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.12); }
-    .workbook-img img { width: 100%; }
+    /* Dark marquee variant (lessons) */
+    .marquee-wrap.dark-fade::before { background: linear-gradient(to right, var(--brand), transparent); }
+    .marquee-wrap.dark-fade::after  { background: linear-gradient(to left,  var(--brand), transparent); }
+    .marquee-img.dark-shadow { box-shadow: 0 4px 20px rgba(0,0,0,.5); }
 
-    /* ==============================================
-       LESSONS (Video)
-    ============================================== */
-    #lessons { background: var(--dark); padding: 80px 0; text-align: center; }
-    .lessons-h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      font-weight: 900;
-      color: var(--white);
-      margin-bottom: 32px;
+    /* ================================================
+       LESSONS — bg-brand (dark)
+    ================================================ */
+    #lessons {
+      background: var(--brand);
+      padding: 80px 0;
+      text-align: center;
     }
-    .lessons-img { border-radius: 10px; overflow: hidden; }
-    .lessons-img img { width: 100%; }
 
-    /* ==============================================
-       ENROLLMENT
-    ============================================== */
-    #enrollment { background: var(--gray-100); padding: 80px 0; }
+    /* ================================================
+       ENROLLMENT — bg-background (white)
+    ================================================ */
+    #enrollment {
+      background: var(--white);
+      padding: 80px 0;
+    }
     .enrollment-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -366,83 +484,93 @@
       align-items: start;
     }
     .enroll-h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      font-weight: 900;
-      color: var(--dark);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--brand-deep);
+      line-height: 1;
       margin-bottom: 32px;
     }
     .enroll-sub {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 12px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--brand-deep);
+      margin-bottom: 10px;
     }
     .enroll-body {
-      color: var(--gray-500);
-      font-size: 0.92rem;
-      line-height: 1.65;
-      margin-bottom: 18px;
+      font-size: 0.85rem;
+      color: var(--muted-fg);
+      line-height: 1.6;
+      margin-bottom: 16px;
     }
     .enroll-badges {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-    .enroll-badge {
-      border: 1.5px solid var(--orange);
-      border-radius: 100px;
-      padding: 5px 14px;
-      color: var(--orange);
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-    .enroll-note {
-      color: var(--gray-500);
-      font-size: 0.88rem;
-      margin-bottom: 28px;
-    }
-    .enroll-bonus-title {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      color: var(--dark);
-      margin-bottom: 14px;
-    }
-    .enroll-bonus-img { border-radius: 10px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,.1); }
-    .enroll-bonus-img img { width: 100%; }
-
-    /* RIGHT image col */
-    .enroll-img-col {}
-    .enroll-device-img { border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.15); }
-    .enroll-device-img img { width: 100%; }
-
-    /* ==============================================
-       TESTIMONIALS
-    ============================================== */
-    #testimonials { background: var(--dark); padding: 80px 0; text-align: center; }
-    .test-h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      font-weight: 900;
-      color: var(--white);
       margin-bottom: 12px;
     }
-    .test-intro {
-      color: #9ca3af;
-      font-size: 0.95rem;
-      max-width: 580px;
-      margin: 0 auto 36px;
+    .enroll-badge {
+      border: 1.5px solid var(--gold);
+      border-radius: 100px;
+      padding: 4px 12px;
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
-    .test-img { border-radius: 12px; overflow: hidden; max-width: 700px; margin: 0 auto; box-shadow: 0 12px 40px rgba(0,0,0,.4); }
+    .enroll-note {
+      font-size: 0.82rem;
+      color: var(--muted-fg);
+      margin-bottom: 28px;
+    }
+    /* Bonus block inside enrollment */
+    .enroll-bonus-wrap {
+      background: var(--brand);
+      border-radius: 12px;
+      padding: 20px 22px;
+    }
+    .enroll-bonus-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .enroll-bonus-img { border-radius: 8px; overflow: hidden; }
+    .enroll-bonus-img img { width: 100%; }
+
+    .enroll-device-img { border-radius: 14px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.12); }
+    .enroll-device-img img { width: 100%; }
+
+    /* ================================================
+       TESTIMONIALS — bg-muted
+    ================================================ */
+    #testimonials {
+      background: var(--muted);
+      padding: 80px 0;
+      text-align: center;
+    }
+    .test-img {
+      max-width: 680px;
+      margin: 36px auto 0;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,.1);
+    }
     .test-img img { width: 100%; }
 
-    /* ==============================================
-       CAREER
-    ============================================== */
-    #career { background: var(--gray-100); padding: 80px 0; }
+    /* ================================================
+       CAREER — bg-background (white)
+    ================================================ */
+    #career {
+      background: var(--white);
+      padding: 80px 0;
+    }
     .career-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -450,46 +578,52 @@
       align-items: center;
     }
     .career-h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
-      font-weight: 900;
-      color: var(--dark);
-      margin-bottom: 20px;
-      line-height: 1.15;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--brand-deep);
+      line-height: 1;
+      margin-bottom: 16px;
     }
     .career-body {
-      color: var(--gray-500);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      color: var(--muted-fg);
       line-height: 1.7;
       margin-bottom: 28px;
     }
-    .career-img { border-radius: 12px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.1); }
+    .career-img { border-radius: 14px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.08); }
     .career-img img { width: 100%; }
 
-    /* ==============================================
-       CERTIFICATE
-    ============================================== */
-    #certificate { background: var(--dark); padding: 80px 0; }
+    /* ================================================
+       CERTIFICATE — bg-brand (dark)
+    ================================================ */
+    #certificate {
+      background: var(--brand);
+      padding: 80px 0;
+    }
     .cert-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
       align-items: center;
     }
-    .cert-img { border-radius: 12px; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,.5); }
+    .cert-img { border-radius: 14px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
     .cert-img img { width: 100%; }
-    .cert-label { color: var(--orange); font-size: 0.7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 12px; }
     .cert-h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
-      font-weight: 900;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
       color: var(--white);
-      margin-bottom: 20px;
-      line-height: 1.15;
+      line-height: 1;
+      margin-bottom: 16px;
     }
     .cert-body {
-      color: #9ca3af;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,.6);
       line-height: 1.7;
       margin-bottom: 20px;
     }
@@ -498,323 +632,349 @@
       align-items: center;
       gap: 8px;
       color: var(--green);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
     }
-    .cert-approved::before { content: '✓'; font-size: 1rem; }
+    .cert-approved::before { content: '✓'; }
 
-    /* ==============================================
-       OFFER
-    ============================================== */
-    #offer { background: var(--dark2); padding: 80px 0; }
-    .offer-top { text-align: center; margin-bottom: 56px; }
-    .offer-top-h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      font-weight: 900;
-      color: var(--white);
-      margin-bottom: 12px;
+    /* ================================================
+       OFFER — bg-muted
+    ================================================ */
+    #offer {
+      background: var(--muted);
+      padding: 80px 0;
     }
-    .offer-top-sub {
-      color: #9ca3af;
-      font-size: 0.95rem;
-      max-width: 540px;
-      margin: 0 auto;
+    .offer-top {
+      text-align: center;
+      margin-bottom: 56px;
     }
-
     .offer-grid {
       display: grid;
-      grid-template-columns: 1fr 400px;
+      grid-template-columns: 1fr 420px;
       gap: 48px;
       align-items: start;
     }
-
-    /* Left col */
-    .offer-left {}
-    .offer-left-h3 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 6px;
+    /* Left — description */
+    .offer-left-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--brand-deep);
+      line-height: 1;
+      margin-bottom: 8px;
     }
-    .offer-left-sub { color: var(--orange); font-size: 0.82rem; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: .08em; }
-    .offer-includes-label {
-      font-size: 0.75rem;
+    .offer-left-sub {
+      font-size: 0.82rem;
+      color: var(--muted-fg);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .offer-section-label {
+      font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: #9ca3af;
-      margin-bottom: 12px;
+      color: var(--muted-fg);
+      margin-bottom: 10px;
     }
     .offer-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-bottom: 28px;
+      gap: 9px;
+      margin-bottom: 24px;
     }
     .offer-list li {
       display: flex;
       align-items: flex-start;
-      color: #d1d5db;
-      font-size: 0.92rem;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--brand-deep);
       line-height: 1.4;
     }
     .offer-bonus-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 12px;
-    }
-    .offer-bonus-list li { color: #d1d5db; }
-    .offer-bonus-list .star { color: var(--yellow); }
-
-    /* RIGHT — offer box */
-    .offer-box {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 24px 64px rgba(0,0,0,.5);
-      position: sticky;
-      top: 60px;
-    }
-    .offer-box-header {
-      background: var(--orange);
-      padding: 14px 24px;
-      text-align: center;
-    }
-    .offer-box-badge {
-      display: inline-block;
-      background: #fff;
-      color: var(--orange);
-      font-size: 0.72rem;
-      font-weight: 900;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 4px;
-      margin-bottom: 6px;
-    }
-    .offer-box-tag {
-      color: #fff;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      display: block;
-    }
-    .offer-box-name {
-      color: #fff;
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 900;
-      display: block;
-    }
-    .offer-box-body { padding: 24px; }
-    .offer-box-desc {
-      color: var(--gray-500);
-      font-size: 0.82rem;
-      line-height: 1.5;
-      text-align: center;
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .offer-box-section-label {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--gray-500);
+      color: var(--gold);
       margin-bottom: 10px;
     }
-    .offer-box-list {
+    .offer-bonus-list li { color: #374151; }
+
+    /* ===== OFFER BOX — identical to original =====
+       original: "relative overflow-hidden rounded-2xl border-[3px] border-red-600 bg-[#0A0A0A] p-6 sm:p-10 shadow-2xl"
+       + "absolute left-1/2 -translate-x-1/2 top-0 bg-red-600 px-4 py-1.5 rounded-b-lg" badge
+    ============================================== */
+    .offer-box {
+      background: var(--dark-card);
+      border: 3px solid var(--red-cta);
+      border-radius: 16px;
+      overflow: visible;
+      box-shadow: 0 25px 60px rgba(0,0,0,.6);
+      position: sticky;
+      top: 48px;
+    }
+    .offer-box-inner {
+      padding: 48px 32px 32px;
+      position: relative;
+    }
+    /* Top badge — centered, hangs from top border */
+    .offer-box-badge {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -1px;
+      background: var(--red-cta);
+      padding: 6px 16px;
+      border-radius: 0 0 8px 8px;
+      white-space: nowrap;
+    }
+    .offer-box-badge span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    /* "ACESSO COMPLETO" label */
+    .offer-box-tag {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red-cta);
+      margin-bottom: 4px;
+    }
+    /* Product name */
+    .offer-box-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    /* Gold accent on name */
+    .offer-box-name .gld { color: var(--gold); }
+
+    .offer-box-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,.55);
+      line-height: 1.55;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .ob-section-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 10px;
+    }
+    .ob-list {
       display: flex;
       flex-direction: column;
       gap: 8px;
       margin-bottom: 16px;
     }
-    .offer-box-list li {
+    .ob-list li {
       display: flex;
       align-items: center;
-      font-size: 0.82rem;
-      color: var(--gray-700);
+      gap: 8px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,.75);
     }
-    .offer-box-list li .check { color: var(--green); }
-    .offer-box-bonus-label {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: .1em;
+    .ob-list li .chk { width: 16px; height: 16px; font-size: 0.55rem; }
+    .ob-bonus-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--yellow);
+      color: var(--gold);
       margin-bottom: 10px;
     }
-    .offer-box-bonus-list li .star { color: var(--yellow); font-size: 0.75rem; }
-
-    .offer-price-block {
-      padding: 20px 0 16px;
-      border-top: 1px solid #f0f0f0;
-      text-align: center;
+    /* Price block */
+    .ob-price-block {
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 8px;
     }
-    .offer-was {
-      color: var(--gray-500);
-      font-size: 0.82rem;
-      text-decoration: line-through;
+    .ob-was {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,.35);
+      font-style: italic;
     }
-    .offer-today-label {
-      font-size: 0.72rem;
+    .ob-today {
+      font-size: 0.65rem;
       font-weight: 800;
-      letter-spacing: .1em;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      color: var(--orange);
-      margin-top: 4px;
+      color: rgba(255,255,255,.4);
+      margin-top: 2px;
     }
-    .offer-price {
-      font-family: 'Outfit', sans-serif;
-      font-size: 3rem;
-      font-weight: 900;
-      color: var(--dark);
+    /* Price — Bebas Neue, very large, gold */
+    .ob-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 8vw, 5.5rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--gold);
       line-height: 1;
-      margin: 4px 0;
+      margin: 4px 0 2px;
     }
-    .offer-price small { font-size: 1.3rem; font-weight: 700; vertical-align: top; margin-top: 8px; display: inline-block; }
-    .offer-sub {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: .08em;
+    .ob-price small {
+      font-size: 1.4rem;
+      vertical-align: top;
+      margin-top: 10px;
+      display: inline-block;
+    }
+    .ob-payment-type {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--gray-500);
-      margin-bottom: 16px;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 20px;
     }
-
-    .offer-box-cta { font-size: 1.05rem; padding: 18px; border-radius: 6px; }
-
-    .offer-trust {
+    /* CTA inside offer box */
+    .ob-cta {
+      font-size: 1.6rem;
+      padding: 18px 24px;
+      border-radius: 12px;
+      width: 100%;
+    }
+    /* Trust row */
+    .ob-trust {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      margin-top: 12px;
+      gap: 20px;
+      margin-top: 14px;
       flex-wrap: wrap;
     }
-    .offer-trust span {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--gray-500);
-      display: flex;
-      align-items: center;
-      gap: 4px;
+    .ob-trust span {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
     }
-
-    /* Urgency row */
-    .offer-urgency {
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      border-radius: 6px;
-      padding: 8px 12px;
+    /* Viewers urgency */
+    .ob-urgency {
       margin-top: 12px;
       text-align: center;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #9a3412;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #fbbf24;
+      background: rgba(251,191,36,.08);
+      border: 1px solid rgba(251,191,36,.15);
+      border-radius: 6px;
+      padding: 6px 12px;
     }
 
-    /* ==============================================
-       GUARANTEE
-    ============================================== */
-    #guarantee { background: #fff; padding: 80px 0; }
+    /* ================================================
+       GUARANTEE — bg-background (white)
+    ================================================ */
+    #guarantee {
+      background: var(--white);
+      padding: 80px 0;
+    }
     .guarantee-grid {
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 48px;
       align-items: center;
-      max-width: 780px;
+      max-width: 760px;
       margin: 0 auto;
     }
     .guarantee-badge {
-      width: 160px;
-      height: 160px;
+      width: 156px; height: 156px;
       border-radius: 50%;
-      border: 5px solid var(--green);
-      background: #fff;
+      border: 4px solid var(--green);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      box-shadow: 0 4px 24px rgba(34,197,94,.2);
+      box-shadow: 0 0 0 8px rgba(16,185,129,.08);
       flex-shrink: 0;
-      padding: 16px;
     }
-    .guarantee-badge-n {
-      font-family: 'Outfit', sans-serif;
-      font-size: 2.6rem;
-      font-weight: 900;
+    .guarantee-n {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
       color: var(--green);
       line-height: 1;
     }
-    .guarantee-badge-t {
-      font-size: 0.68rem;
+    .guarantee-t {
+      font-size: 0.65rem;
       font-weight: 700;
-      color: var(--green);
       text-transform: uppercase;
-      letter-spacing: .06em;
-      margin-top: 2px;
+      letter-spacing: .08em;
+      color: var(--green);
       line-height: 1.3;
     }
-    .guarantee-label { color: var(--orange); font-size: 0.7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 8px; }
     .guarantee-h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-      font-weight: 900;
-      color: var(--dark);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--brand-deep);
+      line-height: 1;
       margin-bottom: 14px;
     }
     .guarantee-body {
-      color: var(--gray-500);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
+      color: var(--muted-fg);
       line-height: 1.7;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .guarantee-tagline {
+      font-size: 0.9rem;
       font-weight: 700;
-      color: var(--dark);
-      font-size: 0.95rem;
+      color: var(--brand-deep);
     }
 
-    /* ==============================================
-       INSTRUCTOR
-    ============================================== */
-    #instructor { background: var(--gray-100); padding: 80px 0; }
+    /* ================================================
+       INSTRUCTOR — bg-muted
+    ================================================ */
+    #instructor {
+      background: var(--muted);
+      padding: 80px 0;
+    }
     .instructor-grid {
       display: grid;
-      grid-template-columns: 320px 1fr;
+      grid-template-columns: 300px 1fr;
       gap: 56px;
       align-items: start;
     }
-    .instructor-photo { border-radius: 12px; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,.12); }
+    .instructor-photo { border-radius: 14px; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,.1); }
     .instructor-photo img { width: 100%; display: block; }
-    .instructor-label { color: var(--orange); font-size: 0.7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 8px; }
     .instructor-name {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      font-weight: 900;
-      color: var(--dark);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--brand-deep);
+      line-height: 1;
       margin-bottom: 4px;
     }
     .instructor-title {
-      color: var(--gray-500);
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 20px;
+      font-size: 0.88rem;
+      color: var(--muted-fg);
       font-style: italic;
+      margin-bottom: 20px;
     }
     .instructor-bio {
-      color: var(--gray-500);
-      font-size: 0.92rem;
+      font-size: 0.88rem;
+      color: var(--muted-fg);
       line-height: 1.7;
       margin-bottom: 24px;
     }
@@ -827,34 +987,32 @@
     .instructor-list li {
       display: flex;
       align-items: center;
-      color: var(--gray-700);
-      font-size: 0.9rem;
+      gap: 10px;
+      font-size: 0.88rem;
       font-weight: 600;
+      color: var(--brand-deep);
     }
 
-    /* ==============================================
-       FAQ
-    ============================================== */
-    #faq { background: var(--dark); padding: 80px 0; text-align: center; }
-    .faq-h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      font-weight: 900;
-      color: var(--white);
-      margin-bottom: 36px;
+    /* ================================================
+       FAQ — bg-brand (dark)
+    ================================================ */
+    #faq {
+      background: var(--brand);
+      padding: 80px 0;
+      text-align: center;
     }
     .faq-list {
-      max-width: 720px;
-      margin: 0 auto 40px;
+      max-width: 680px;
+      margin: 36px auto 40px;
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
     .faq-item {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 8px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 10px;
       overflow: hidden;
     }
     .faq-q {
@@ -867,22 +1025,22 @@
       justify-content: space-between;
       gap: 12px;
       color: var(--white);
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       font-weight: 600;
       text-align: left;
       transition: background .15s;
     }
     .faq-q:hover { background: rgba(255,255,255,.03); }
-    .faq-q[aria-expanded="true"] { color: var(--orange); }
+    .faq-q[aria-expanded="true"] { color: var(--gold); }
     .faq-icon {
-      width: 26px; height: 26px;
+      width: 24px; height: 24px;
       border-radius: 50%;
-      background: var(--orange);
+      background: var(--red-cta);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       flex-shrink: 0;
       transition: transform .2s;
@@ -891,138 +1049,147 @@
     .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
     .faq-a-inner {
       padding: 0 20px 18px;
-      color: #9ca3af;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,.55);
       line-height: 1.7;
     }
+    .faq-cta-wrap { text-align: center; }
 
-    /* ==============================================
-       FINAL CTA
-    ============================================== */
-    #final-cta { background: var(--gray-100); padding: 80px 0; text-align: center; }
+    /* ================================================
+       FINAL CTA — bg-muted
+    ================================================ */
+    #final-cta {
+      background: var(--muted);
+      padding: 80px 0;
+      text-align: center;
+    }
     .final-h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 900;
-      color: var(--dark);
-      margin-bottom: 12px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--brand-deep);
+      line-height: 1;
+      max-width: 720px;
+      margin: 0 auto 12px;
     }
     .final-sub {
-      color: var(--gray-500);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      color: var(--muted-fg);
       margin-bottom: 32px;
     }
-    .final-trust {
-      color: var(--gray-500);
-      font-size: 0.8rem;
-      margin-top: 12px;
-    }
+    .final-trust { font-size: 0.72rem; color: var(--muted-fg); margin-top: 12px; }
     .final-badges {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      margin-top: 20px;
+      gap: 12px;
       flex-wrap: wrap;
+      margin-top: 20px;
     }
-    .final-badge-item {
+    .final-badge {
       display: flex;
       align-items: center;
       gap: 6px;
-      background: #fff;
-      border: 1px solid #e5e7eb;
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 8px 16px;
-      font-size: 0.82rem;
+      padding: 8px 14px;
+      font-size: 0.78rem;
       font-weight: 700;
-      color: var(--gray-700);
+      color: var(--brand-deep);
     }
-    .final-badge-item svg { color: var(--orange); }
 
-    /* ==============================================
+    /* ================================================
        FOOTER
-    ============================================== */
+    ================================================ */
     #footer {
-      background: #080808;
+      background: var(--brand-deep);
       padding: 28px 0;
       text-align: center;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid rgba(255,255,255,.05);
     }
     .footer-logo {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Bebas Neue', sans-serif;
       font-size: 1.1rem;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 12px;
     }
-    .footer-logo span { color: var(--orange); }
+    .footer-logo span { color: var(--gold); }
     .footer-links {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px 20px;
       flex-wrap: wrap;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
-    .footer-links a { color: #4b5563; font-size: 0.78rem; transition: color .15s; }
+    .footer-links a { color: #4b5563; font-size: 0.75rem; transition: color .15s; }
     .footer-links a:hover { color: #9ca3af; }
-    .footer-copy { color: #374151; font-size: 0.75rem; }
+    .footer-copy { color: #374151; font-size: 0.72rem; }
 
-    /* ==============================================
+    /* ================================================
        RESPONSIVE
-    ============================================== */
+    ================================================ */
     @media (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr 400px; gap: 36px; }
-      .offer-grid { grid-template-columns: 1fr 360px; }
-      .instructor-grid { grid-template-columns: 280px 1fr; }
+      .hero-grid  { grid-template-columns: 1fr 380px; gap: 36px; }
+      .offer-grid { grid-template-columns: 1fr 380px; }
     }
 
     @media (max-width: 768px) {
       .sec { padding: 60px 0; }
+      body { padding-top: 30px; }
+      #flash-banner { height: 30px; }
 
+      /* Hero: texto primeiro, imagem depois */
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .hero-img-col { order: -1; max-width: 400px; margin: 0 auto; }
-      .hero-cta-wrap { align-items: center; }
-      .hero-bullets { align-items: flex-start; text-align: left; }
+      .hero-img { max-width: 420px; margin: 0 auto; }
+      .hero-cta-block { align-items: center; }
+      .hero-sub { max-width: 100%; }
 
-      .learn-grid { grid-template-columns: repeat(2, 1fr); }
-
-      .enrollment-grid { grid-template-columns: 1fr; }
-      .career-grid { grid-template-columns: 1fr; }
-      .cert-grid { grid-template-columns: 1fr; }
-      .cert-img { order: -1; }
-
-      .offer-grid { grid-template-columns: 1fr; }
-      .offer-box { position: static; }
-
-      .guarantee-grid { grid-template-columns: 1fr; text-align: center; justify-items: center; }
-
-      .instructor-grid { grid-template-columns: 1fr; }
-      .instructor-photo { max-width: 320px; }
+      /* Grids → 1 coluna */
+      .learn-grid          { grid-template-columns: repeat(2, 1fr); }
+      .enrollment-grid     { grid-template-columns: 1fr; }
+      .career-grid         { grid-template-columns: 1fr; }
+      .cert-grid           { grid-template-columns: 1fr; }
+      .cert-img            { order: -1; }
+      .offer-grid          { grid-template-columns: 1fr; }
+      .offer-box           { position: static; }
+      .guarantee-grid      { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+      .instructor-grid     { grid-template-columns: 1fr; }
+      .instructor-photo    { max-width: 280px; margin: 0 auto; }
     }
 
     @media (max-width: 480px) {
-      .w { padding: 0 16px; }
+      .shell { padding-inline: 16px; }
       .sec { padding: 50px 0; }
+
+      .hero-grid { gap: 24px; }
+      .hero-h1 { font-size: 2.4rem; }
+      .hero-img { max-width: 100%; }
+
       .learn-grid { grid-template-columns: 1fr; }
-      .btn-lg { font-size: 1rem; padding: 16px 32px; }
+
+      .marquee-img { height: 160px; }
+
+      /* MOBILE: imagens maiores */
+      .enroll-device-img img,
+      .career-img img,
+      .cert-img img,
+      .test-img img  { width: 100%; }
+
+      .ob-price { font-size: 4rem; }
+
       .flash-inner { gap: 8px; }
-      .flash-text { font-size: 0.78rem; }
-      .offer-price { font-size: 2.4rem; }
-      .hero-h1 { font-size: 1.8rem; }
+      .flash-copy  { display: none; } /* hide text on very small screens */
     }
   </style>
 </head>
 <body>
 
-<!-- ============================================================
-     CONFIG — Editar apenas aqui
-============================================================= -->
+<!-- CONFIG — editar apenas aqui -->
 <script>
   var C = {
     CHECKOUT: "INSERIR_CHECKOUT_AQUI",
@@ -1030,70 +1197,78 @@
   };
   function goCheckout(e) {
     if (e) e.preventDefault();
-    var p  = new URLSearchParams(window.location.search);
+    var p = new URLSearchParams(window.location.search);
     var out = new URLSearchParams();
     ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid']
-      .forEach(function(k){ if(p.get(k)) out.set(k, p.get(k)); });
+      .forEach(function(k){ if (p.get(k)) out.set(k, p.get(k)); });
     var qs = out.toString();
     window.location.href = C.CHECKOUT + (qs ? (C.CHECKOUT.includes('?') ? '&' : '?') + qs : '');
   }
   // fbq('init', C.PIXEL); fbq('track', 'PageView');
 </script>
 
+
 <!-- ============================================================
-     FLASH SALE BANNER + TIMER
+     FLASH SALE BANNER — fixo, vermelho #E11D48
 ============================================================= -->
-<div id="flash-banner" role="banner" aria-label="Promoção relâmpago">
+<div id="flash-banner" role="status" aria-label="Promoção relâmpago ativa">
   <div class="flash-inner">
-    <span class="flash-badge">Promoção Relâmpago</span>
-    <span class="flash-text">Curso Online de Mecânica Automotiva</span>
-    <div class="flash-timer" aria-label="Tempo restante da promoção">
-      <small>Encerra em</small>
-      <span id="t-h">00</span><span class="flash-sep">:</span>
-      <span id="t-m">00</span><span class="flash-sep">:</span>
+    <span class="flash-tag">Promoção Relâmpago</span>
+    <span class="flash-copy">Curso Online de Mecânica Automotiva</span>
+    <div class="flash-timer" aria-label="Contador regressivo">
+      <span id="t-h">00</span><span class="sep">:</span>
+      <span id="t-m">59</span><span class="sep">:</span>
       <span id="t-s">00</span>
     </div>
   </div>
 </div>
 
+
 <!-- ============================================================
-     HERO
+     HERO — bg-brand (dark navy), texto ANTES da imagem
 ============================================================= -->
-<section id="hero" aria-labelledby="hero-heading">
-  <div class="w">
+<section id="hero" aria-labelledby="hero-h1">
+  <div class="shell">
     <div class="hero-grid">
 
-      <div class="hero-text">
+      <!-- 1. COPY — sempre primeiro -->
+      <div>
         <span class="hero-kicker">Curso Online de Mecânica Automotiva</span>
-        <h1 class="hero-h1" id="hero-heading">
-          Torne-se um Mecânico Automotivo Profissional —
-          <em>Mesmo Começando do Zero.</em>
+
+        <h1 class="hero-h1" id="hero-h1">
+          Torne-se um Mecânico<br>
+          Automotivo Profissional —<br>
+          <span class="gold-hi">Mesmo Começando do Zero.</span>
         </h1>
+
         <p class="hero-sub">
           Mesmo que você nunca tenha trabalhado com mecânica na vida, vai aprender
-          passo a passo através de videoaulas práticas, receber seu certificado
-          profissional ao concluir e sair com uma habilidade pela qual pode cobrar de verdade.
+          passo a passo através de videoaulas práticas, receber seu certificado profissional
+          ao concluir e <strong>sair com uma habilidade pela qual pode cobrar de verdade.</strong>
         </p>
+
         <ul class="hero-bullets" aria-label="Destaques do curso">
-          <li><span class="check">✓</span> 50+ videoaulas práticas</li>
-          <li><span class="check">✓</span> 10 bônus exclusivos</li>
-          <li><span class="check">✓</span> Certificado profissional</li>
-          <li><span class="check">✓</span> Acesso vitalício</li>
+          <li><span class="chk" aria-hidden="true">✓</span> 50+ videoaulas práticas</li>
+          <li><span class="chk" aria-hidden="true">✓</span> 10 bônus exclusivos</li>
+          <li><span class="chk" aria-hidden="true">✓</span> Certificado profissional</li>
+          <li><span class="chk" aria-hidden="true">✓</span> Acesso vitalício</li>
         </ul>
-        <div class="hero-cta-wrap">
-          <a href="#offer" class="btn btn-lg btn-glow" onclick="goCheckout(event)">
+
+        <div class="hero-cta-block">
+          <a href="#offer" class="btn btn-glow" onclick="goCheckout(event)">
             Quero Me Inscrever Agora
           </a>
-          <span class="hero-trust">Acesso imediato &nbsp;•&nbsp; Checkout 100% seguro</span>
+          <span class="hero-trust-line">Acesso imediato &nbsp;•&nbsp; Checkout 100% seguro</span>
         </div>
       </div>
 
-      <div class="hero-img-col">
+      <!-- 2. IMAGEM — depois do copy -->
+      <div>
         <img
+          class="hero-img"
           src="assets/hero-mockup.png"
           alt="Materiais do Curso de Mecânica Automotiva"
           width="480"
-          loading="eager"
           fetchpriority="high"
         />
       </div>
@@ -1104,23 +1279,21 @@
 
 
 <!-- ============================================================
-     AUDIENCE — "Este treinamento é para você?"
+     AUDIENCE — bg-muted
 ============================================================= -->
-<section id="audience" class="sec" aria-labelledby="audience-heading">
-  <div class="w">
+<section id="audience" aria-labelledby="audience-h2">
+  <div class="shell">
     <div class="audience-wrap">
-      <span class="label">Este Treinamento é Para Você?</span>
-      <h2 class="audience-h2" id="audience-heading">Este curso foi feito para você.</h2>
-      <p style="color:var(--gray-500); font-size:.95rem; margin-bottom:24px;">
-        Este treinamento foi desenvolvido para:
-      </p>
-      <ul class="audience-list">
-        <li>Iniciantes completos que querem aprender uma nova profissão.</li>
-        <li>Quem quer ganhar uma renda extra.</li>
-        <li>Auxiliares de oficina prontos para ir além.</li>
-        <li>Quem trabalha com carros e quer evoluir.</li>
-        <li>Quem quer aprender mecânica do jeito prático.</li>
-        <li>Donos de carro que querem entender e resolver problemas sem pagar oficina.</li>
+      <span class="section-tag">Este Treinamento é Para Você?</span>
+      <h2 class="section-title" id="audience-h2">Este curso foi feito para você.</h2>
+      <p class="section-sub" style="margin-top:10px;">Este treinamento foi desenvolvido para:</p>
+      <ul class="audience-list" role="list">
+        <li class="soft-card" role="listitem"><span class="chk" aria-hidden="true">✓</span> Iniciantes completos que querem aprender uma nova profissão.</li>
+        <li class="soft-card" role="listitem"><span class="chk" aria-hidden="true">✓</span> Quem quer ganhar uma renda extra.</li>
+        <li class="soft-card" role="listitem"><span class="chk" aria-hidden="true">✓</span> Auxiliares de oficina prontos para ir além.</li>
+        <li class="soft-card" role="listitem"><span class="chk" aria-hidden="true">✓</span> Quem trabalha com carros e quer evoluir.</li>
+        <li class="soft-card" role="listitem"><span class="chk" aria-hidden="true">✓</span> Quem quer aprender mecânica do jeito prático.</li>
+        <li class="soft-card" role="listitem"><span class="chk" aria-hidden="true">✓</span> Donos de carro que querem entender e resolver problemas sem pagar oficina.</li>
       </ul>
     </div>
   </div>
@@ -1128,85 +1301,80 @@
 
 
 <!-- ============================================================
-     LEARN — "O que você vai aprender?"
+     LEARN — bg-brand (dark)
 ============================================================= -->
-<section id="learn" class="sec" aria-labelledby="learn-heading">
-  <div class="w">
-    <span class="label" style="display:block;text-align:center;">O Que Você Vai Aprender</span>
-    <h2 class="learn-h2" id="learn-heading">O que você vai aprender?</h2>
-    <p class="learn-intro">
-      Dentro do treinamento profissional de mecânica automotiva, você vai aprender:
-    </p>
+<section id="learn" aria-labelledby="learn-h2">
+  <div class="shell">
+    <span class="section-tag" style="display:block;text-align:center;">O Que Você Vai Aprender</span>
+    <h2 class="section-title on-dark" style="text-align:center;" id="learn-h2">O que você vai aprender?</h2>
+    <p class="learn-intro">Dentro do treinamento profissional de mecânica automotiva, você vai aprender:</p>
     <div class="learn-grid" role="list">
-      <div class="learn-item" role="listitem">Os fundamentos essenciais da mecânica automotiva</div>
-      <div class="learn-item" role="listitem">Como o motor funciona, sistema por sistema</div>
-      <div class="learn-item" role="listitem">Sistemas de arrefecimento e lubrificação</div>
-      <div class="learn-item" role="listitem">Sistemas de freios e suspensão</div>
-      <div class="learn-item" role="listitem">Sistemas elétricos e injeção eletrônica</div>
-      <div class="learn-item" role="listitem">Diagnóstico de falhas e uso do scanner automotivo</div>
-      <div class="learn-item" role="listitem">Trocas de óleo, correia, velas e filtros</div>
-      <div class="learn-item" role="listitem">Inspeções preventivas e manutenção geral</div>
-      <div class="learn-item" role="listitem">As técnicas exatas que os profissionais usam todo dia</div>
+      <div class="learn-item" role="listitem"><span class="chk" aria-hidden="true">✓</span>Os fundamentos essenciais da mecânica automotiva</div>
+      <div class="learn-item" role="listitem"><span class="chk" aria-hidden="true">✓</span>Como o motor funciona, sistema por sistema</div>
+      <div class="learn-item" role="listitem"><span class="chk" aria-hidden="true">✓</span>Sistemas de arrefecimento e lubrificação</div>
+      <div class="learn-item" role="listitem"><span class="chk" aria-hidden="true">✓</span>Sistemas de freios e suspensão</div>
+      <div class="learn-item" role="listitem"><span class="chk" aria-hidden="true">✓</span>Sistemas elétricos e injeção eletrônica</div>
+      <div class="learn-item" role="listitem"><span class="chk" aria-hidden="true">✓</span>Diagnóstico de falhas e uso do scanner automotivo</div>
+      <div class="learn-item" role="listitem"><span class="chk" aria-hidden="true">✓</span>Trocas de óleo, correia, velas e filtros</div>
+      <div class="learn-item" role="listitem"><span class="chk" aria-hidden="true">✓</span>Inspeções preventivas e manutenção geral</div>
+      <div class="learn-item" role="listitem"><span class="chk" aria-hidden="true">✓</span>As técnicas exatas que os profissionais usam todo dia</div>
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     WORKBOOK — "Material de apoio"
+     WORKBOOK — bg-muted + marquee da direita para a esquerda
 ============================================================= -->
-<section id="workbook" class="sec" aria-labelledby="workbook-heading">
-  <div class="w">
-    <span class="label" style="display:block;">Apostilas de estudo</span>
-    <h2 class="workbook-h2" id="workbook-heading">Material de apoio</h2>
-    <div class="workbook-img">
-      <img
-        src="assets/workbook-strip.jpg"
-        alt="Apostilas e materiais de apoio do curso de mecânica automotiva"
-        loading="lazy"
-        width="1100"
-      />
+<section id="workbook" aria-labelledby="workbook-h2">
+  <div class="shell">
+    <span class="section-tag" style="display:block;">Apostilas de estudo</span>
+    <h2 class="section-title" id="workbook-h2">Material de apoio</h2>
+  </div>
+
+  <!-- Marquee: fora do shell para sangrar nas bordas -->
+  <div class="marquee-wrap" aria-label="Galeria de materiais de apoio" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- Duplicado para loop infinito -->
+      <img class="marquee-img" src="assets/workbook-strip.jpg" alt="" />
+      <img class="marquee-img" src="assets/workbook-strip.jpg" alt="" />
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     LESSONS — "Videoaulas"
+     LESSONS — bg-brand (dark) + marquee
 ============================================================= -->
-<section id="lessons" class="sec" aria-labelledby="lessons-heading">
-  <div class="w">
-    <span class="label" style="display:block;text-align:center;">Aulas</span>
-    <h2 class="lessons-h2" id="lessons-heading">Videoaulas</h2>
-    <div class="lessons-img">
-      <img
-        src="assets/lessons-strip.jpg"
-        alt="Grade de videoaulas do curso de mecânica automotiva"
-        loading="lazy"
-        width="1100"
-      />
+<section id="lessons" aria-labelledby="lessons-h2">
+  <div class="shell">
+    <span class="section-tag" style="display:block;text-align:center;">Aulas</span>
+    <h2 class="section-title on-dark" style="text-align:center;" id="lessons-h2">Videoaulas</h2>
+  </div>
+
+  <div class="marquee-wrap dark-fade" style="margin-top:32px;" aria-label="Galeria de videoaulas" aria-hidden="true">
+    <div class="marquee-track">
+      <img class="marquee-img dark-shadow" src="assets/lessons-strip.jpg" alt="" />
+      <img class="marquee-img dark-shadow" src="assets/lessons-strip.jpg" alt="" />
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     ENROLLMENT — "O que você recebe ao se inscrever"
+     ENROLLMENT — bg-white
 ============================================================= -->
-<section id="enrollment" class="sec" aria-labelledby="enrollment-heading">
-  <div class="w">
-    <span class="label">Inscrição</span>
-    <h2 class="enroll-h2" id="enrollment-heading">O que você recebe ao se inscrever</h2>
+<section id="enrollment" aria-labelledby="enrollment-h2">
+  <div class="shell">
+    <span class="section-tag">Inscrição</span>
+    <h2 class="enroll-h2" id="enrollment-h2">O que você recebe ao se inscrever</h2>
 
     <div class="enrollment-grid">
 
-      <!-- Coluna esquerda — texto -->
+      <!-- LEFT: text + bonuses -->
       <div>
-        <h3 class="enroll-sub">Treinamento profissional de mecânica automotiva</h3>
-        <p class="enroll-body">
-          Mais de 50 videoaulas guiando você pelos procedimentos passo a passo
-          usados em oficinas reais.
-        </p>
+        <p class="enroll-sub">Treinamento profissional de mecânica automotiva</p>
+        <p class="enroll-body">Mais de 50 videoaulas guiando você pelos procedimentos passo a passo usados em oficinas reais.</p>
         <div class="enroll-badges">
           <span class="enroll-badge">Acesso imediato</span>
           <span class="enroll-badge">Conteúdo atualizado</span>
@@ -1214,26 +1382,19 @@
         </div>
         <p class="enroll-note">Estude no seu ritmo, de qualquer dispositivo.</p>
 
-        <p class="enroll-bonus-title">Bônus exclusivos</p>
-        <div class="enroll-bonus-img">
-          <img
-            src="assets/bonus-grid.jpg"
-            alt="Grade dos 10 bônus exclusivos do curso"
-            loading="lazy"
-            width="600"
-          />
+        <!-- Bonus block -->
+        <div class="enroll-bonus-wrap">
+          <p class="enroll-bonus-label">Bônus exclusivos</p>
+          <div class="enroll-bonus-img">
+            <img src="assets/bonus-grid.jpg" alt="10 bônus exclusivos inclusos no curso" loading="lazy" width="600" />
+          </div>
         </div>
       </div>
 
-      <!-- Coluna direita — imagem dispositivo -->
-      <div class="enroll-img-col">
+      <!-- RIGHT: device/platform image -->
+      <div>
         <div class="enroll-device-img">
-          <img
-            src="assets/hero-mockup.png"
-            alt="Plataforma do curso acessível em qualquer dispositivo"
-            loading="lazy"
-            width="500"
-          />
+          <img src="assets/hero-mockup.png" alt="Plataforma do curso acessível em qualquer dispositivo" loading="lazy" width="500" />
         </div>
       </div>
 
@@ -1243,110 +1404,83 @@
 
 
 <!-- ============================================================
-     TESTIMONIALS — "O que nossos alunos estão dizendo"
+     TESTIMONIALS — bg-muted
 ============================================================= -->
-<section id="testimonials" class="sec" aria-labelledby="testimonials-heading">
-  <div class="w">
-    <span class="label" style="display:block;text-align:center;">Prova social</span>
-    <h2 class="test-h2" id="testimonials-heading">O que nossos alunos estão dizendo</h2>
-    <p class="test-intro">
-      Feedback real de pessoas que já estão mudando de vida com nosso treinamento
-      profissional de mecânica automotiva.
+<section id="testimonials" aria-labelledby="test-h2">
+  <div class="shell">
+    <span class="section-tag" style="display:block;text-align:center;">Prova social</span>
+    <h2 class="section-title" style="text-align:center;" id="test-h2">O que nossos alunos estão dizendo</h2>
+    <p class="section-sub" style="text-align:center;margin-top:10px;max-width:560px;margin-inline:auto;">
+      Feedback real de pessoas que já estão mudando de vida com nosso treinamento profissional de mecânica automotiva.
     </p>
     <div class="test-img">
-      <img
-        src="assets/students-testimonials.webp"
-        alt="Depoimentos de alunos do curso de mecânica automotiva"
-        loading="lazy"
-        width="700"
-      />
+      <img src="assets/students-testimonials.webp" alt="Depoimentos de alunos do curso de mecânica automotiva" loading="lazy" width="680" />
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     CAREER — "Aprenda uma profissão com demanda em quase todo lugar."
+     CAREER — bg-white
 ============================================================= -->
-<section id="career" class="sec" aria-labelledby="career-heading">
-  <div class="w">
+<section id="career" aria-labelledby="career-h2">
+  <div class="shell">
     <div class="career-grid">
-
       <div>
-        <span class="label">Carreira</span>
-        <h2 class="career-h2" id="career-heading">
-          Aprenda uma profissão com demanda em quase todo lugar.
-        </h2>
+        <span class="section-tag">Carreira</span>
+        <h2 class="career-h2" id="career-h2">Aprenda uma profissão com demanda em quase todo lugar.</h2>
         <p class="career-body">
           Todo dia, milhões de carros precisam de serviço, revisão e reparo.
-          É por isso que mecânicos qualificados continuam em alta demanda e bem
-          remunerados. Quando você concluir este treinamento, receberá um certificado
-          que pode usar pessoalmente ou profissionalmente.
+          É por isso que mecânicos qualificados continuam em alta demanda e bem remunerados.
+          Quando você concluir este treinamento, receberá um certificado que pode usar pessoalmente ou profissionalmente.
         </p>
         <a href="#offer" class="btn" onclick="goCheckout(event)">Quero Começar Agora</a>
       </div>
-
       <div>
         <div class="career-img">
-          <img
-            src="assets/students-approved.webp"
-            alt="Mais de 3.000 alunos aprovados no curso de mecânica automotiva"
-            loading="lazy"
-            width="500"
-          />
+          <img src="assets/students-approved.webp" alt="Mais de 3.000 alunos já concluíram o curso de mecânica automotiva" loading="lazy" width="500" />
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     CERTIFICATE — "Certificado profissional"
+     CERTIFICATE — bg-brand (dark)
 ============================================================= -->
-<section id="certificate" class="sec" aria-labelledby="cert-heading">
-  <div class="w">
+<section id="certificate" aria-labelledby="cert-h2">
+  <div class="shell">
     <div class="cert-grid">
-
       <div class="cert-img">
-        <img
-          src="assets/certificate.jpg"
-          alt="Certificado profissional do curso de mecânica automotiva"
-          loading="lazy"
-          width="500"
-        />
+        <img src="assets/certificate.jpg" alt="Certificado profissional do curso de mecânica automotiva" loading="lazy" width="500" />
       </div>
-
       <div>
-        <span class="cert-label">Certificado profissional</span>
-        <h2 class="cert-h2" id="cert-heading">
-          Ao concluir o curso, você recebe um Certificado Profissional.
-        </h2>
+        <span class="section-tag">Certificado profissional</span>
+        <h2 class="cert-h2" id="cert-h2">Quando você concluir o curso, você recebe um Certificado Profissional.</h2>
         <p class="cert-body">
-          Quando você concluir o curso, recebe um Certificado Profissional que comprova
-          sua qualificação. Use-o para ganhar a confiança dos seus clientes, fechar mais
-          serviços, se candidatar a vagas e cobrar mais pelo seu trabalho. É a prova de que
-          você domina o ofício — e o diferencial que abre portas no mercado.
+          Ao concluir o curso, você recebe um Certificado Profissional que comprova sua qualificação.
+          Use-o para ganhar a confiança dos seus clientes, fechar mais serviços, se candidatar a vagas
+          e cobrar mais pelo seu trabalho. É a prova de que você domina o ofício — e o diferencial
+          que abre portas no mercado.
         </p>
         <span class="cert-approved">Aprovado por milhares</span>
       </div>
-
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     OFFER — "Expert Automotive Training"
+     OFFER — bg-muted
 ============================================================= -->
-<section id="offer" class="sec" aria-labelledby="offer-heading">
-  <div class="w">
+<section id="offer" aria-labelledby="offer-h2">
+  <div class="shell">
 
     <div class="offer-top">
-      <span class="label">Oferta especial</span>
-      <h2 class="offer-top-h2" id="offer-heading">Treinamento Profissional de Mecânica</h2>
-      <p class="offer-top-sub">
+      <span class="section-tag" style="display:block;text-align:center;">Oferta especial</span>
+      <h2 class="section-title" id="offer-h2">Treinamento Profissional de Mecânica</h2>
+      <p class="section-sub" style="margin-top:10px;max-width:520px;margin-inline:auto;">
         Comece do zero e construa uma carreira sólida em mecânica automotiva.
         Garantia de 7 dias. Acesso imediato após confirmação.
       </p>
@@ -1354,95 +1488,94 @@
 
     <div class="offer-grid">
 
-      <!-- Coluna esquerda — o que está incluso -->
-      <div class="offer-left">
-        <h3 class="offer-left-h3">Acesso Completo</h3>
-        <div class="offer-left-sub">Curso de Mecânica Automotiva™ +</div>
-
-        <p style="color:#9ca3af; font-size:.9rem; line-height:1.6; margin-bottom:24px;">
-          Receba o curso completo com todos os bônus, ferramentas práticas
-          e seu certificado digital — tudo em uma única compra.
+      <!-- LEFT — o que está incluso -->
+      <div>
+        <h3 class="offer-left-h2">Acesso Completo</h3>
+        <p class="offer-left-sub">Curso de Mecânica Automotiva™ +</p>
+        <p class="offer-left-sub">
+          Receba o curso completo com todos os bônus, ferramentas práticas e seu certificado digital — tudo em uma única compra.
         </p>
 
-        <p class="offer-includes-label">O Curso Completo Inclui:</p>
-        <ul class="offer-list" aria-label="Conteúdo do curso principal">
-          <li><span class="check">✓</span>50+ videoaulas práticas</li>
-          <li><span class="check">✓</span>Certificado profissional</li>
-          <li><span class="check">✓</span>Conteúdo 100% online</li>
-          <li><span class="check">✓</span>Acesso vitalício</li>
+        <p class="offer-section-label">O Curso Completo Inclui:</p>
+        <ul class="offer-list" aria-label="Itens do curso">
+          <li><span class="chk" aria-hidden="true">✓</span>50+ videoaulas práticas</li>
+          <li><span class="chk" aria-hidden="true">✓</span>Certificado profissional</li>
+          <li><span class="chk" aria-hidden="true">✓</span>Conteúdo 100% online</li>
+          <li><span class="chk" aria-hidden="true">✓</span>Acesso vitalício</li>
         </ul>
 
         <p class="offer-bonus-label">+ 10 Bônus Exclusivos:</p>
-        <ul class="offer-list offer-bonus-list" aria-label="10 bônus exclusivos">
-          <li><span class="star">★</span>Manual completo do mecânico automotivo</li>
-          <li><span class="star">★</span>Tabela de torques e regulagens</li>
-          <li><span class="star">★</span>Checklist de manutenção preventiva</li>
-          <li><span class="star">★</span>Guia de diagnóstico de falhas</li>
-          <li><span class="star">★</span>Manual de ferramentas do mecânico</li>
-          <li><span class="star">★</span>Guia de preços de serviços</li>
-          <li><span class="star">★</span>...e mais 4 manuais especializados</li>
+        <ul class="offer-list offer-bonus-list" aria-label="Bônus inclusos">
+          <li><span class="star" aria-hidden="true">★</span>Manual completo do mecânico automotivo</li>
+          <li><span class="star" aria-hidden="true">★</span>Tabela de torques e regulagens</li>
+          <li><span class="star" aria-hidden="true">★</span>Checklist de manutenção preventiva</li>
+          <li><span class="star" aria-hidden="true">★</span>Guia de diagnóstico de falhas</li>
+          <li><span class="star" aria-hidden="true">★</span>Manual de ferramentas do mecânico</li>
+          <li><span class="star" aria-hidden="true">★</span>Guia de preços de serviços</li>
+          <li><span class="star" aria-hidden="true">★</span>...e mais 4 manuais especializados</li>
         </ul>
       </div>
 
-      <!-- Coluna direita — caixa de compra -->
+      <!-- RIGHT — Offer Box idêntico ao original -->
       <div>
         <div class="offer-box" role="region" aria-label="Comprar agora">
-
-          <div class="offer-box-header">
-            <div class="offer-box-badge">★ Oferta por Tempo Limitado</div>
-            <span class="offer-box-tag">Acesso Completo</span>
-            <span class="offer-box-name">Curso de Mecânica Automotiva™ +</span>
+          <!-- Badge no topo — pendurado na borda -->
+          <div class="offer-box-badge">
+            <span>★ Oferta por Tempo Limitado</span>
           </div>
 
-          <div class="offer-box-body">
+          <div class="offer-box-inner">
+            <p class="offer-box-tag">Acesso Completo</p>
+            <h3 class="offer-box-name">
+              Curso de Mecânica<br>Automotiva™ <span class="gld">+</span>
+            </h3>
+
             <p class="offer-box-desc">
-              Receba o curso completo com todos os bônus, ferramentas práticas
-              e seu certificado digital — tudo em uma única compra.
+              Receba o curso completo com todos os bônus, ferramentas práticas e
+              seu certificado digital — tudo em uma única compra.
             </p>
 
-            <p class="offer-box-section-label">O Curso Completo Inclui:</p>
-            <ul class="offer-box-list" aria-label="Itens inclusos">
-              <li><span class="check">✓</span>50+ videoaulas práticas</li>
-              <li><span class="check">✓</span>Certificado profissional</li>
-              <li><span class="check">✓</span>Conteúdo 100% online</li>
-              <li><span class="check">✓</span>Acesso vitalício</li>
+            <p class="ob-section-label">O Curso Completo Inclui:</p>
+            <ul class="ob-list">
+              <li><span class="chk" aria-hidden="true">✓</span>50+ videoaulas práticas</li>
+              <li><span class="chk" aria-hidden="true">✓</span>Certificado profissional</li>
+              <li><span class="chk" aria-hidden="true">✓</span>Conteúdo 100% online</li>
+              <li><span class="chk" aria-hidden="true">✓</span>Acesso vitalício</li>
             </ul>
 
-            <p class="offer-box-bonus-label">+ 10 Bônus Exclusivos:</p>
-            <ul class="offer-box-list offer-box-bonus-list" aria-label="Bônus inclusos">
-              <li><span class="star">★</span>Manual completo do mecânico automotivo</li>
-              <li><span class="star">★</span>Tabela de torques e regulagens</li>
-              <li><span class="star">★</span>Checklist de manutenção preventiva</li>
-              <li><span class="star">★</span>Guia de diagnóstico de falhas</li>
-              <li><span class="star">★</span>Manual de ferramentas do mecânico</li>
-              <li><span class="star">★</span>Guia de preços de serviços</li>
-              <li><span class="star">★</span>...e mais 4 manuais especializados</li>
+            <p class="ob-bonus-label">+ 10 Bônus Exclusivos:</p>
+            <ul class="ob-list">
+              <li><span class="star" style="font-size:.75rem" aria-hidden="true">★</span>Manual completo do mecânico automotivo</li>
+              <li><span class="star" style="font-size:.75rem" aria-hidden="true">★</span>Tabela de torques e regulagens</li>
+              <li><span class="star" style="font-size:.75rem" aria-hidden="true">★</span>Checklist de manutenção preventiva</li>
+              <li><span class="star" style="font-size:.75rem" aria-hidden="true">★</span>Guia de diagnóstico de falhas</li>
+              <li><span class="star" style="font-size:.75rem" aria-hidden="true">★</span>Manual de ferramentas do mecânico</li>
+              <li><span class="star" style="font-size:.75rem" aria-hidden="true">★</span>Guia de preços de serviços</li>
+              <li><span class="star" style="font-size:.75rem;opacity:.5" aria-hidden="true">★</span><span style="opacity:.5;font-style:italic;">...e mais 4 manuais especializados</span></li>
             </ul>
 
-            <div class="offer-price-block">
-              <div class="offer-was">Preço Normal R$ [VALOR ORIGINAL]</div>
-              <div class="offer-today-label">Somente Hoje</div>
-              <div class="offer-price" aria-label="Preço: R$ [VALOR]">
-                <small>R$</small>[VALOR]
-              </div>
-              <div class="offer-sub">Pagamento único · Acesso imediato</div>
+            <!-- Price block -->
+            <div class="ob-price-block">
+              <div class="ob-was">Preço Normal R$ 197</div>
+              <div class="ob-today">Somente Hoje</div>
+              <div class="ob-price" aria-label="R$ 37"><small>R$</small>37</div>
+              <div class="ob-payment-type">Pagamento único · Acesso imediato</div>
 
-              <a href="#" class="btn btn-full offer-box-cta btn-glow" onclick="goCheckout(event)">
+              <a href="#" class="btn ob-cta btn-glow btn-full" onclick="goCheckout(event)">
                 Obter Acesso Completo →
               </a>
 
-              <div class="offer-trust" aria-label="Selos de confiança">
-                <span>🔒 Checkout seguro</span>
-                <span>⚡ Acesso imediato</span>
-                <span>✅ Garantia 7 dias</span>
+              <div class="ob-trust">
+                <span>🔒 Checkout Seguro</span>
+                <span>⚡ Acesso Imediato</span>
+                <span>✅ Garantia 7 Dias</span>
               </div>
 
-              <div class="offer-urgency" role="status" aria-live="polite">
+              <div class="ob-urgency" role="status" aria-live="polite">
                 ⚠️ <span id="viewers">47</span> pessoas estão visualizando esta página agora
               </div>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -1452,55 +1585,43 @@
 
 
 <!-- ============================================================
-     GUARANTEE — "Zero risco: Garantia de devolução do dinheiro"
+     GUARANTEE — bg-white
 ============================================================= -->
-<section id="guarantee" class="sec" aria-labelledby="guarantee-heading">
-  <div class="w">
+<section id="guarantee" aria-labelledby="guarantee-h2">
+  <div class="shell">
     <div class="guarantee-grid">
-
       <div class="guarantee-badge" role="img" aria-label="Garantia de 7 dias">
-        <div class="guarantee-badge-n">7</div>
-        <div class="guarantee-badge-t">Dias de<br>Garantia</div>
+        <div class="guarantee-n">7</div>
+        <div class="guarantee-t">Dias de<br>Garantia</div>
       </div>
-
       <div>
-        <div class="guarantee-label">Garantia</div>
-        <h2 class="guarantee-h2" id="guarantee-heading">
-          Zero risco: Garantia de devolução do dinheiro
-        </h2>
+        <span class="section-tag">Garantia</span>
+        <h2 class="guarantee-h2" id="guarantee-h2">Zero risco: Garantia de devolução do dinheiro</h2>
         <p class="guarantee-body">
-          Sua satisfação vem primeiro. Você tem uma garantia incondicional de 7 dias
-          com acesso total a todas as aulas do curso. Se por qualquer motivo decidir que
-          não é para você, basta pedir o reembolso dentro desse prazo e devolveremos
-          100% do seu dinheiro — sem perguntas. O risco é nosso.
+          Sua satisfação vem primeiro. Você tem uma garantia incondicional de 7 dias com
+          acesso total a todas as aulas do curso. Se por qualquer motivo decidir que não é
+          para você, basta pedir o reembolso dentro desse prazo e devolveremos 100% do seu
+          dinheiro — sem perguntas. O risco é nosso.
         </p>
         <p class="guarantee-tagline">Você não tem nada a perder.</p>
       </div>
-
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     INSTRUCTOR — "Conheça John Mitchell."
+     INSTRUCTOR — bg-muted
 ============================================================= -->
-<section id="instructor" class="sec" aria-labelledby="instructor-heading">
-  <div class="w">
+<section id="instructor" aria-labelledby="instructor-h2">
+  <div class="shell">
     <div class="instructor-grid">
-
       <div class="instructor-photo">
-        <img
-          src="assets/instructor.jpg"
-          alt="John Mitchell — Instrutor do Curso de Mecânica Automotiva"
-          loading="lazy"
-          width="320"
-        />
+        <img src="assets/instructor.jpg" alt="John Mitchell — Instrutor do Curso de Mecânica Automotiva" loading="lazy" width="300" />
       </div>
-
       <div>
-        <div class="instructor-label">Seu instrutor</div>
-        <h2 class="instructor-name" id="instructor-heading">Conheça John Mitchell.</h2>
+        <span class="section-tag">Seu instrutor</span>
+        <h2 class="instructor-name" id="instructor-h2">Conheça John Mitchell.</h2>
         <p class="instructor-title">Mecânico experiente com mais de 15 anos de estrada.</p>
         <p class="instructor-bio">
           John Mitchell passou mais de 15 anos fazendo manutenção, diagnóstico e reparo
@@ -1510,127 +1631,116 @@
           a passo, de forma simples e direta, tudo que precisa para dominar a mecânica
           automotiva e começar a ganhar com seus próprios serviços.
         </p>
-        <ul class="instructor-list" aria-label="Credenciais do instrutor">
-          <li><span class="check">✓</span>15+ anos no ofício</li>
-          <li><span class="check">✓</span>Milhares de carros atendidos</li>
-          <li><span class="check">✓</span>Método simples e prático</li>
-          <li><span class="check">✓</span>Feito para quem começa do zero</li>
+        <ul class="instructor-list" aria-label="Credenciais">
+          <li><span class="chk" aria-hidden="true">✓</span>15+ anos no ofício</li>
+          <li><span class="chk" aria-hidden="true">✓</span>Milhares de carros atendidos</li>
+          <li><span class="chk" aria-hidden="true">✓</span>Método simples e prático</li>
+          <li><span class="chk" aria-hidden="true">✓</span>Feito para quem começa do zero</li>
         </ul>
-        <a href="#offer" class="btn" onclick="goCheckout(event)">Comece a Aprender Hoje</a>
+        <a href="#offer" class="btn btn-sm" onclick="goCheckout(event)">Comece a Aprender Hoje</a>
       </div>
-
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     FAQ
+     FAQ — bg-brand (dark)
 ============================================================= -->
-<section id="faq" class="sec" aria-labelledby="faq-heading">
-  <div class="w">
-    <span class="label" style="display:block;text-align:center;">Perguntas</span>
-    <h2 class="faq-h2" id="faq-heading">Perguntas frequentes</h2>
+<section id="faq" aria-labelledby="faq-h2">
+  <div class="shell">
+    <span class="section-tag" style="display:block;text-align:center;">Perguntas</span>
+    <h2 class="section-title on-dark" style="text-align:center;" id="faq-h2">Perguntas frequentes</h2>
 
     <div class="faq-list" role="list">
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="true" aria-controls="faq-a1">
+        <button class="faq-q" aria-expanded="true" aria-controls="fa1">
           Preciso ter experiência para fazer o curso?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-        <div class="faq-a" id="faq-a1" style="max-height:200px;">
+        <div class="faq-a" id="fa1" style="max-height:200px">
           <div class="faq-a-inner">
-            Não. O curso começa do absoluto zero e vai até o nível avançado. Mesmo que
-            você nunca tenha colocado a mão em um carro antes, vai aprender passo a passo
-            de forma simples e prática.
+            Não. O curso começa do absoluto zero e vai até o nível avançado. Mesmo que você nunca tenha colocado a mão em um carro antes, vai aprender passo a passo de forma simples e prática.
           </div>
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false" aria-controls="faq-a2">
+        <button class="faq-q" aria-expanded="false" aria-controls="fa2">
           Como acesso o curso?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-        <div class="faq-a" id="faq-a2">
+        <div class="faq-a" id="fa2">
           <div class="faq-a-inner">
-            Após confirmar o pagamento, você recebe um e-mail com as instruções de acesso.
-            O processo é imediato — em poucos minutos você já pode começar a assistir as aulas.
+            Após confirmar o pagamento, você recebe um e-mail com as instruções de acesso. O processo é imediato — em poucos minutos você já pode começar a assistir as aulas.
           </div>
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false" aria-controls="faq-a3">
+        <button class="faq-q" aria-expanded="false" aria-controls="fa3">
           Por quanto tempo tenho acesso ao conteúdo?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-        <div class="faq-a" id="faq-a3">
+        <div class="faq-a" id="fa3">
           <div class="faq-a-inner">
-            Seu acesso é vitalício. Você pode assistir, rever e baixar os materiais quantas
-            vezes quiser, para sempre, no seu próprio ritmo.
+            Seu acesso é vitalício. Você pode assistir, rever e baixar os materiais quantas vezes quiser, para sempre, no seu próprio ritmo.
           </div>
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false" aria-controls="faq-a4">
+        <button class="faq-q" aria-expanded="false" aria-controls="fa4">
           Vou receber um certificado?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-        <div class="faq-a" id="faq-a4">
+        <div class="faq-a" id="fa4">
           <div class="faq-a-inner">
-            Sim. Ao concluir o curso, você recebe um Certificado Profissional que comprova
-            sua qualificação e pode ser usado para ganhar a confiança de clientes, fechar
-            mais serviços e fortalecer seu currículo.
+            Sim. Ao concluir o curso, você recebe um Certificado Profissional que comprova sua qualificação e pode ser usado para ganhar a confiança de clientes, fechar mais serviços e fortalecer seu currículo.
           </div>
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false" aria-controls="faq-a5">
+        <button class="faq-q" aria-expanded="false" aria-controls="fa5">
           E se eu não gostar do curso?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-        <div class="faq-a" id="faq-a5">
+        <div class="faq-a" id="fa5">
           <div class="faq-a-inner">
-            Sem problema. Você tem 7 dias de garantia incondicional. Se por qualquer motivo
-            não ficar satisfeito, basta pedir o reembolso e devolvemos 100% do seu dinheiro
-            — sem perguntas e sem burocracia.
+            Sem problema. Você tem 7 dias de garantia incondicional. Se por qualquer motivo não ficar satisfeito, basta pedir o reembolso e devolvemos 100% do seu dinheiro — sem perguntas e sem burocracia.
           </div>
         </div>
       </div>
 
     </div>
 
-    <div style="text-align:center;">
-      <a href="#offer" class="btn btn-lg" onclick="goCheckout(event)">Comece a Aprender Hoje</a>
+    <div class="faq-cta-wrap">
+      <a href="#offer" class="btn btn-sm" onclick="goCheckout(event)">Comece a Aprender Hoje</a>
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     FINAL CTA — "Pronto para se tornar um mecânico certificado?"
+     FINAL CTA — bg-muted
 ============================================================= -->
-<section id="final-cta" class="sec" aria-labelledby="final-cta-heading">
-  <div class="w">
-    <h2 class="final-h2" id="final-cta-heading">Pronto para se tornar um mecânico certificado?</h2>
+<section id="final-cta" aria-labelledby="final-h2">
+  <div class="shell">
+    <h2 class="final-h2" id="final-h2">Pronto para se tornar um mecânico certificado?</h2>
     <p class="final-sub">Acesso imediato após confirmação. Garantia de 7 dias.</p>
-    <a href="#" class="btn btn-lg btn-glow" onclick="goCheckout(event)">
-      Inscreva-se Agora por R$ [VALOR]
-    </a>
+    <a href="#" class="btn btn-glow" onclick="goCheckout(event)">Inscreva-se Agora por R$ 37</a>
     <p class="final-trust">Checkout 100% seguro</p>
-    <div class="final-badges" role="list" aria-label="Garantias">
-      <div class="final-badge-item" role="listitem">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18z"/></svg>
+    <div class="final-badges">
+      <span class="final-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color:var(--gold)" aria-hidden="true"><path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18z"/></svg>
         Acesso vitalício
-      </div>
-      <div class="final-badge-item" role="listitem">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 14H4V5h16v12z"/><path d="M8 15l8-4.5L8 6v9z"/></svg>
+      </span>
+      <span class="final-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color:var(--gold)" aria-hidden="true"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 14H4V5h16v12z"/><path d="M8 15l8-4.5L8 6v9z"/></svg>
         50+ aulas
-      </div>
+      </span>
     </div>
   </div>
 </section>
@@ -1640,17 +1750,15 @@
      FOOTER
 ============================================================= -->
 <footer id="footer" role="contentinfo">
-  <div class="w">
+  <div class="shell">
     <div class="footer-logo">Mecânica<span>Pro</span></div>
     <nav class="footer-links" aria-label="Links do rodapé">
-      <a href="[INSERIR — POLÍTICA DE PRIVACIDADE]">Política de Privacidade</a>
-      <a href="[INSERIR — TERMOS DE USO]">Termos de Uso</a>
-      <a href="[INSERIR — CONTATO]">Contato</a>
-      <a href="[INSERIR — REEMBOLSO]">Política de Reembolso</a>
+      <a href="[INSERIR POLÍTICA DE PRIVACIDADE]">Política de Privacidade</a>
+      <a href="[INSERIR TERMOS DE USO]">Termos de Uso</a>
+      <a href="[INSERIR CONTATO]">Contato</a>
+      <a href="[INSERIR REEMBOLSO]">Política de Reembolso</a>
     </nav>
-    <p class="footer-copy">
-      © <span id="yr"></span> Treinamento de Mecânica Automotiva. Todos os direitos reservados.
-    </p>
+    <p class="footer-copy">© <span id="yr"></span> Treinamento de Mecânica Automotiva. Todos os direitos reservados.</p>
   </div>
 </footer>
 
@@ -1662,75 +1770,50 @@
   /* Ano footer */
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  /* ---- COUNTDOWN TIMER ---- */
-  (function() {
-    var key = 'mecanica_timer_end';
-    var stored = sessionStorage.getItem(key);
-    var end;
-    if (stored) {
-      end = parseInt(stored, 10);
-    } else {
-      /* 23 minutos e 47 segundos — mesmo padrão da página original */
-      end = Date.now() + ((23 * 60 + 47) * 1000);
-      sessionStorage.setItem(key, end);
-    }
-    function pad(n) { return n < 10 ? '0' + n : '' + n; }
-    function tick() {
+  /* ---- COUNTDOWN TIMER (persistente na sessão) ---- */
+  (function(){
+    var KEY = 'mec_timer_end';
+    var stored = sessionStorage.getItem(KEY);
+    var end = stored ? parseInt(stored,10) : Date.now() + (23*60+47)*1000;
+    if (!stored) sessionStorage.setItem(KEY, end);
+    function pad(n){ return n<10?'0'+n:''+n; }
+    function tick(){
       var left = Math.max(0, end - Date.now());
-      var h = Math.floor(left / 3600000);
-      var m = Math.floor((left % 3600000) / 60000);
-      var s = Math.floor((left % 60000) / 1000);
-      document.getElementById('t-h').textContent = pad(h);
-      document.getElementById('t-m').textContent = pad(m);
-      document.getElementById('t-s').textContent = pad(s);
-      if (left > 0) setTimeout(tick, 1000);
+      document.getElementById('t-h').textContent = pad(Math.floor(left/3600000));
+      document.getElementById('t-m').textContent = pad(Math.floor((left%3600000)/60000));
+      document.getElementById('t-s').textContent = pad(Math.floor((left%60000)/1000));
+      if (left>0) setTimeout(tick,1000);
     }
     tick();
   })();
 
-  /* ---- VIEWER COUNT (social proof dinâmica) ---- */
-  (function() {
+  /* ---- VIEWER COUNT dinâmico ---- */
+  (function(){
     var el = document.getElementById('viewers');
     if (!el) return;
-    setInterval(function() {
-      var base = 47;
-      var offset = Math.floor(Math.random() * 9) - 4;
-      el.textContent = Math.max(30, base + offset);
+    setInterval(function(){
+      el.textContent = Math.max(30, 47 + Math.floor(Math.random()*9) - 4);
     }, 7000);
   })();
 
   /* ---- FAQ ACCORDION ---- */
-  document.querySelectorAll('.faq-q').forEach(function(btn) {
-    btn.addEventListener('click', function() {
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
       var expanded = this.getAttribute('aria-expanded') === 'true';
-      var id = this.getAttribute('aria-controls');
-      var panel = document.getElementById(id);
-      document.querySelectorAll('.faq-q').forEach(function(b) {
-        b.setAttribute('aria-expanded', 'false');
+      var panel    = document.getElementById(this.getAttribute('aria-controls'));
+      /* Fechar todos */
+      document.querySelectorAll('.faq-q').forEach(function(b){
+        b.setAttribute('aria-expanded','false');
         var p = document.getElementById(b.getAttribute('aria-controls'));
         if (p) p.style.maxHeight = null;
       });
-      if (!expanded) {
-        this.setAttribute('aria-expanded', 'true');
+      /* Abrir clicado */
+      if (!expanded){
+        this.setAttribute('aria-expanded','true');
         panel.style.maxHeight = panel.scrollHeight + 'px';
       }
     });
   });
-
-  /* ---- LAZY IMAGES ---- */
-  if ('IntersectionObserver' in window) {
-    var imgs = document.querySelectorAll('img[loading="lazy"]');
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          var img = e.target;
-          if (img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; }
-          io.unobserve(img);
-        }
-      });
-    }, { rootMargin: '300px' });
-    imgs.forEach(function(img) { io.observe(img); });
-  }
 </script>
 
 </body>
