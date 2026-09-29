@@ -1181,6 +1181,9 @@
       .sec     { padding: 60px 0; }
       body     { padding-top: 38px; }
 
+      /* Marquee maior no tablet/mobile */
+      .marquee-img { height: auto; width: 80vw; max-width: 560px; border-radius: 12px; }
+
       /* Hero já é coluna central — só ajusta bullets */
       .hero-bullets { grid-template-columns: 1fr 1fr; max-width: 100%; }
       .hero-h1      { font-size: clamp(2.2rem, 8vw, 3rem); }
@@ -1222,11 +1225,11 @@
       }
       .hero-bullets li { padding: 10px 14px; }
 
-      /* Marquee — imagem ocupa quase toda a largura do viewport */
+      /* Marquee — imagem ocupa a largura do viewport no mobile */
       .marquee-img {
         height: auto;
-        width: 88vw;
-        max-width: 420px;
+        width: 92vw;
+        max-width: 500px;
         border-radius: 12px;
       }
 
