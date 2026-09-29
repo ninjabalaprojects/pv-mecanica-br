@@ -25,14 +25,16 @@
        RESET
     ================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; overflow-x: hidden; } /* overflow-x aqui, não no body — evita quebrar position:fixed */
+    html { scroll-behavior: smooth; } /* sem overflow em html/body — garante position:fixed no iOS Safari */
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background: var(--brand); /* mesma cor do hero — elimina faixa branca acima dele */
+      background: var(--brand);
       color: #13151c;
       line-height: 1.6;
-      padding-top: 38px; /* height of fixed flash banner */
+      padding-top: 38px;
     }
+    /* Wrapper interno recebe overflow-x:hidden — não afeta position:fixed do banner */
+    #page-wrap { overflow-x: hidden; }
     img { max-width: 100%; height: auto; display: block; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
@@ -1249,6 +1251,8 @@
 </div>
 
 
+<div id="page-wrap">
+
 <!-- ============================================================
      HERO — coluna central: copy → imagem → bullets → CTA
 ============================================================= -->
@@ -1816,6 +1820,8 @@
     });
   });
 </script>
+
+</div><!-- /#page-wrap -->
 
 </body>
 </html>
