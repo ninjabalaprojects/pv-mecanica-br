@@ -473,19 +473,21 @@
       box-shadow: 0 4px 16px rgba(0,0,0,.1);
     }
 
-    /* Dark marquee variant (lessons) */
-    .marquee-wrap.dark-fade::before { background: linear-gradient(to right, var(--brand), transparent); }
-    .marquee-wrap.dark-fade::after  { background: linear-gradient(to left,  var(--brand), transparent); }
-    .marquee-img.dark-shadow { box-shadow: 0 4px 20px rgba(0,0,0,.5); }
+    /* Dark marquee variant (lessons) — não usado mais, mantido para referência */
+    .marquee-wrap.dark-fade::before { background: linear-gradient(to right, var(--muted), transparent); }
+    .marquee-wrap.dark-fade::after  { background: linear-gradient(to left,  var(--muted), transparent); }
+    .marquee-img.dark-shadow { box-shadow: 0 4px 16px rgba(0,0,0,.1); }
 
     /* ================================================
-       LESSONS — bg-brand (dark)
+       LESSONS — bg-muted (branco/cinza claro)
     ================================================ */
     #lessons {
-      background: var(--brand);
+      background: var(--muted);
       padding: 80px 0;
       text-align: center;
     }
+    #lessons .section-title { color: var(--brand-deep); }
+    #lessons .learn-intro   { color: var(--muted-fg); }
 
     /* ================================================
        ENROLLMENT — bg-background (white)
@@ -1381,7 +1383,7 @@
 <section id="lessons" aria-labelledby="lessons-h2">
   <div class="shell">
     <span class="section-tag" style="display:block;text-align:center;">Aulas</span>
-    <h2 class="section-title on-dark" style="text-align:center;" id="lessons-h2">Videoaulas</h2>
+    <h2 class="section-title" style="text-align:center;" id="lessons-h2">Videoaulas</h2>
   </div>
 
   <div class="marquee-wrap dark-fade" style="margin-top:32px;" aria-label="Galeria de videoaulas" aria-hidden="true">
