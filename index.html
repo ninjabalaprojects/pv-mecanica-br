@@ -927,14 +927,15 @@
       overflow: visible;
     }
     .instructor-photo {
-      border-radius: 16px;
-      overflow: hidden;
+      /* sem overflow:hidden — badge precisa sobressair */
       box-shadow: 0 16px 48px rgba(0,0,0,.12);
+      border-radius: 16px;
     }
-    .instructor-photo img { width: 100%; display: block; }
+    /* border-radius na img diretamente — igual ao original (rounded-2xl no img) */
+    .instructor-photo img { width: 100%; display: block; border-radius: 16px; }
     .instructor-badge {
       position: absolute;
-      top: 16px; right: -16px;
+      top: 16px; right: -12px;   /* original: -right-3 = -0.75rem = -12px */
       width: 40px; height: 40px;
       border-radius: 50%;
       background: var(--gold);
