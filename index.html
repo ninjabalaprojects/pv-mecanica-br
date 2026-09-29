@@ -467,8 +467,9 @@
     }
 
     .marquee-img {
-      height: 200px;
+      height: 260px;
       width: auto;
+      max-width: none; /* sobrescreve o reset global img { max-width:100% } */
       border-radius: 10px;
       flex-shrink: 0;
       object-fit: cover;
@@ -1150,7 +1151,7 @@
       body     { padding-top: 38px; }
 
       /* Marquee maior no tablet/mobile */
-      .marquee-img { height: auto; width: 90vw; max-width: none; border-radius: 12px; }
+      .marquee-img { height: auto; min-height: 280px; width: 88vw; max-width: none; border-radius: 12px; object-fit: cover; }
 
       /* Hero já é coluna central — só ajusta bullets */
       .hero-bullets { grid-template-columns: 1fr 1fr; max-width: 100%; }
@@ -1192,7 +1193,7 @@
       .hero-bullets li { padding: 10px 14px; }
 
       /* Marquee — imagem quase tela cheia no mobile pequeno */
-      .marquee-img { height: auto; width: 94vw; max-width: none; border-radius: 12px; }
+      .marquee-img { height: auto; min-height: 260px; width: 92vw; max-width: none; border-radius: 12px; object-fit: cover; }
       .marquee-track { gap: 12px; }
 
       /* Offer */
