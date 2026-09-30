@@ -1248,7 +1248,7 @@
     <span class="flash-copy">Curso Online de Mecânica Automotiva</span>
     <div class="flash-timer" aria-label="Contador regressivo">
       <span id="t-h">00</span><span class="sep">:</span>
-      <span id="t-m">59</span><span class="sep">:</span>
+      <span id="t-m">10</span><span class="sep">:</span>
       <span id="t-s">00</span>
     </div>
   </div>
@@ -1779,7 +1779,7 @@
   (function(){
     var KEY = 'mec_timer_end';
     var stored = sessionStorage.getItem(KEY);
-    var end = stored ? parseInt(stored,10) : Date.now() + (23*60+47)*1000;
+    var end = stored ? parseInt(stored,10) : Date.now() + 10*60*1000;
     if (!stored) sessionStorage.setItem(KEY, end);
     function pad(n){ return n<10?'0'+n:''+n; }
     function tick(){
