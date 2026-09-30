@@ -31,7 +31,7 @@
       background: var(--brand);
       color: #13151c;
       line-height: 1.6;
-      padding-top: 38px;
+      padding-top: 40px;
     }
     /* Wrapper interno recebe overflow-x:hidden — não afeta position:fixed do banner */
     #page-wrap { overflow-x: hidden; }
@@ -181,62 +181,76 @@
     /* ================================================
        FLASH SALE BANNER — #E11D48, fixo no topo do viewport
     ================================================ */
+    /* FLASH BANNER — idêntico ao original: #E11D48, h-10/h-12, zap icon + FLASH SALE italic + digit boxes pretas */
     #flash-banner {
-      background: var(--red);
+      background: #E11D48;
+      border-bottom: 1px solid rgba(0,0,0,.2);
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 300;
-      padding: 0 14px;
+      cursor: pointer;
+      transition: background .15s;
     }
+    #flash-banner:hover { background: #BE123C; }
     .flash-inner {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 24px;
       width: 100%;
       max-width: var(--max-w);
       margin: 0 auto;
-      height: 38px;
-      flex-wrap: nowrap;
-      overflow: hidden;
+      height: 40px;
+      padding: 0 14px;
     }
-    .flash-tag {
-      background: rgba(0,0,0,.2);
-      border: 1px solid rgba(255,255,255,.2);
-      color: #fff;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
-      padding: 1px 7px;
-      border-radius: 3px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .flash-copy {
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .flash-timer {
+    /* Grupo esquerdo: ícone + texto */
+    .flash-left {
       display: flex;
       align-items: center;
-      gap: 2px;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.04em;
-      color: #fff;
+      gap: 6px;
+    }
+    .flash-zap {
+      width: 14px; height: 14px;
+      fill: #fff; color: #fff;
       flex-shrink: 0;
     }
-    .flash-timer .sep { opacity: .45; }
-
-    /* Mobile: oculta o texto descritivo, mantém tag + timer */
-    @media (max-width: 480px) {
-      .flash-copy { display: none; }
-      .flash-inner { gap: 8px; }
+    .flash-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      font-style: italic;
+      letter-spacing: -0.02em;
+      color: #fff;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    /* Grupo direito: caixas pretas de dígitos — igual ao original */
+    .flash-digits {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .flash-digit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      background: #000;
+      border-radius: 4px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+    @media (min-width: 640px) {
+      .flash-inner  { height: 48px; gap: 32px; }
+      .flash-label  { font-size: 1.15rem; }
+      .flash-digit  { width: 32px; height: 32px; font-size: 1rem; }
+    }
+    @media (max-width: 400px) {
+      .flash-inner { gap: 16px; }
+      .flash-label { font-size: 0.9rem; }
+      .flash-digit { width: 24px; height: 24px; font-size: 0.8rem; }
     }
 
     /* ================================================
@@ -1151,7 +1165,7 @@
 
     @media (max-width: 768px) {
       .sec     { padding: 60px 0; }
-      body     { padding-top: 38px; }
+      body     { padding-top: 40px; }
 
       /* Marquee maior no tablet/mobile */
       .marquee-img { height: auto; min-height: 280px; width: 88vw; max-width: none; border-radius: 12px; object-fit: cover; }
@@ -1242,14 +1256,19 @@
 <!-- ============================================================
      FLASH SALE BANNER — fixo, vermelho #E11D48
 ============================================================= -->
-<div id="flash-banner" role="status" aria-label="Promoção relâmpago ativa">
+<div id="flash-banner" role="status" aria-label="Promoção relâmpago ativa" onclick="document.querySelector('#offer').scrollIntoView({behavior:'smooth'})">
   <div class="flash-inner">
-    <span class="flash-tag">Promoção Relâmpago</span>
-    <span class="flash-copy">Curso Online de Mecânica Automotiva</span>
-    <div class="flash-timer" aria-label="Contador regressivo">
-      <span id="t-h">00</span><span class="sep">:</span>
-      <span id="t-m">10</span><span class="sep">:</span>
-      <span id="t-s">00</span>
+    <!-- Ícone + texto — idêntico ao original -->
+    <div class="flash-left">
+      <svg class="flash-zap" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>
+      </svg>
+      <span class="flash-label">Flash Sale</span>
+    </div>
+    <!-- Dígitos em caixas pretas — idêntico ao original -->
+    <div class="flash-digits" aria-label="Contador regressivo">
+      <div class="flash-digit" id="t-m">10</div>
+      <div class="flash-digit" id="t-s">00</div>
     </div>
   </div>
 </div>
@@ -1784,8 +1803,7 @@
     function pad(n){ return n<10?'0'+n:''+n; }
     function tick(){
       var left = Math.max(0, end - Date.now());
-      document.getElementById('t-h').textContent = pad(Math.floor(left/3600000));
-      document.getElementById('t-m').textContent = pad(Math.floor((left%3600000)/60000));
+      document.getElementById('t-m').textContent = pad(Math.floor(left/60000));
       document.getElementById('t-s').textContent = pad(Math.floor((left%60000)/1000));
       if (left>0) setTimeout(tick,1000);
     }
